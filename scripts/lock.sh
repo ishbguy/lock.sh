@@ -96,7 +96,7 @@ require_tool() { require has_tool "You need to install tools" "$@"; }
 inicfg() { require_tool git; git config --file "$@"; }
 
 check_password() { echo "$1" | su -c true - "$USER" &>/dev/null; }
-unlock_login() {
+lock_login() {
     dialog --clear --erase-on-exit --ascii-lines --output-fd "$1" \
         --passwordbox "Enter your password:" 10 40
     echo >&"$1"
@@ -135,19 +135,26 @@ EOF
 
     export DIALOGRC="$LOCK_ABS_DIR/dialogrc"
 
+    # make a fifo file descriptor to store the user password
     local passfd="$(tmpfd)"
     local passfile="$(mktemp -u)"
     mkfifo "$passfile" || return 1
     eval "exec $passfd<>$passfile" && rm -rf "$passfile" || return 1
 
+    local start_time="$(date)"
     if [[ $* ]]; then
         (eval "$@")
-        while [[ ${opts[l]} ]]; do
-            unlock_login "$passfd" && break
-        done
+        # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
+        if [[ $(date_cmp "$(date)" "$start_time") -gt $LOCK_LOGIN_TIME ]]; then
+            while [[ ${opts[l]} ]]; do
+                lock_login "$passfd" && break
+                (eval "$@")
+            done
+        fi
     else
+        # lock without cmd will invoke lock_login as default
         while true; do
-            unlock_login "$passfd" && break
+            lock_login "$passfd" && break
         done
     fi
 }

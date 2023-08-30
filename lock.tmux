@@ -42,7 +42,8 @@ tmux_get_env() {
 
 main() {
     tmux set-option -g lock-after-time "$(tmux_get_option '@lock-after-time' "$(tmux_get_option 'lock-after-time')")"
-    tmux set-option -g lock-command "$TMUX_LOCK_CURRENT_DIR/scripts/lock.sh $(tmux_get_option '@lock-command' "$(tmux_get_option 'lock-command')")"
+    tmux set-option -g lock-command "LOCK_LOGIN_TIME=$(tmux_get_option '@lock-login-time' '60') \
+        $TMUX_LOCK_CURRENT_DIR/scripts/lock.sh $(tmux_get_option '@lock-command' "$(tmux_get_option 'lock-command')")"
     tmux bind-key "$(tmux_get_option '@lock-key' 'M-l')" lock
 }
 

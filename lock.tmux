@@ -28,7 +28,7 @@ tmux_conf_contents() {
 
 tmux_get_option() {
     local option_value
-    option_value="$(tmux show-option -gqv "$1")"
+    option_value="$(tmux show-options -gqv "$1")"
     [[ -n $option_value ]] || option_value="$2"
     echo "$option_value"
 }
@@ -41,8 +41,8 @@ tmux_get_env() {
 }
 
 main() {
-    tmux set-option -g lock-after-time "$(tmux_get_option 'lock-after-time' '60')"
-    tmux set-option -g lock-command "$(tmux_get_option 'lock-command' 'tty-clock -sc')"
+    tmux set-option -g lock-after-time "$(tmux_get_option '@lock-after-time' '60')"
+    tmux set-option -g lock-command "$TMUX_LOCK_CURRENT_DIR/scripts/lock.sh $(tmux_get_option '@lock-command' '')"
     tmux bind-key "$(tmux_get_option '@lock-key' 'M-l')" lock
 }
 

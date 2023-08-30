@@ -99,8 +99,8 @@ check_password() { echo "$1" | su -c true - "$USER" &>/dev/null; }
 unlock_login() {
     dialog --clear --erase-on-exit --ascii-lines --output-fd "$1" \
         --passwordbox "Enter your password:" 10 40
-    echo >&"$passfd"
-    read -ru "$passfd" PASS
+    echo >&"$1"
+    read -ru "$1" PASS
     check_password "$PASS"
 }
 

@@ -41,8 +41,12 @@ tmux_get_env() {
 }
 
 main() {
-    tmux set-option -g lock-after-time "$(tmux_get_option '@lock-after-time' '60')"
-    tmux set-option -g lock-command "$TMUX_LOCK_CURRENT_DIR/scripts/lock.sh $(tmux_get_option '@lock-command' '')"
+    if [[ "$(tmux_get_option 'lock-after-time' '0')" == "0" ]]; then
+        tmux set-option -g lock-after-time "$(tmux_get_option '@lock-after-time' '60')"
+    fi
+    if [[ -z "$(tmux_get_option 'lock-command' '')" ]]; then
+        tmux set-option -g lock-command "$TMUX_LOCK_CURRENT_DIR/scripts/lock.sh $(tmux_get_option '@lock-command' '')"
+    fi
     tmux bind-key "$(tmux_get_option '@lock-key' 'M-l')" lock
 }
 

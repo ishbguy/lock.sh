@@ -112,25 +112,56 @@ lock_login() {
     read -ru "$passfd" PASS
     check_password "$PASS"
 }
+str_sizeof() {
+        local string=$1 max_lines=0 max_cols=0
+        while read -r line; do
+            ((++max_lines))
+            [[ ${#line} -gt $max_cols ]] && max_cols="${#line}"
+        done <<<"$string"
+        echo "$max_lines" "$max_cols"
+}
+cal_start_pos() {
+    echo "$((($(tput lines) - $1) / 2))" "$((($(tput cols) - $2) / 2))"
+}
+lock_draw() {
+    local msg=$1 x=$2 y=$3
+    local IFS= ; while read -r line; do
+        tput cup "$((x++))" "$y"
+        echo "$line"
+    done <<<"$msg"
+}
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.1.0"
+    local VERSION="v0.3.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
-$PROGNAME [-lhvD] [args...]
+$PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string]
     
-    args  will run as the lock screen command
-    -l    need to login to unlock the screen
-    -h    print this help message 
-    -v    print version number
-    -D    turn on debug mode
+    [cmd]           Run the [cmd] as the lock screen command
+    -a <name>       Show the <name> ascii art on lock screen
+    -d <dir>        Specify the ascii art director, work with -a option
+    -s <string>     Show the <string> on lock screen
+    -l              Need to login to unlock the screen
+    -h              Print this help message
+    -v              Print version number
+    -D              Turn on debug mode
+
+For examples:
+
+    lock.sh                     # Run without opts and args will show a login screen
+    lock.sh cmatrix             # Run cmatrix as lock screen
+    lock.sh -l cmatrix          # Run cmatrix as lock screen and need to login to unlock
+    lock.sh -a zebra            # Show the 'zebra' ascii art on lock screen
+    lock.sh -d art -a zebra     # Find 'zebra' ascii art in 'art' director and
+                                # show it on the lock screen
+    lock.sh -s "Hello world!"   # Show the 'Hello world!' string on lock screen
 
 This program is released under the terms of the MIT License.
 EOF
 )
     local -A opts=() args=()
-    pargs opts args 'lhvD' "$@"
+    pargs opts args 'lhvDa:d:s:' "$@"
     shift $((OPTIND - 1))
     [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0
@@ -146,12 +177,48 @@ EOF
     if [[ $* ]]; then
         (eval "$@")
         # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-        if [[ $(date_cmp "$(date)" "$start_time") -gt $LOCK_LOGIN_TIME ]]; then
+        if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
             while [[ ${opts[l]} ]]; do
                 lock_login "Enter your password:" && break
                 (eval "$@")
             done
         fi
+    elif [[ ${opts[s]} ]]; then
+        local -a str_size=($(str_sizeof "${args[s]}"))
+        local -a cur_pos=($(cal_start_pos "${str_size[0]}" "${str_size[1]}"))
+
+        # init and setting the terminal environment
+        tput init; tput smcup; tput clear; tput civis
+
+        (lock_draw "${args[s]}" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
+        # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
+        if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
+            while [[ ${opts[l]} ]]; do
+                lock_login "Enter your password:" && break
+                (lock_draw "${args[s]}" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
+            done
+        fi
+        tput rmcup
+    elif [[ ${opts[a]} ]]; then
+        local art_dir="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
+        [[ -d $art_dir && -e $art_dir/${args[a]} ]] || return 1
+
+        local ascii_art="$(cat "$art_dir/${args[a]}")"
+        local -a str_size=($(str_sizeof "$ascii_art"))
+        local -a cur_pos=($(cal_start_pos "${str_size[0]}" "${str_size[1]}"))
+
+        # init and setting the terminal environment
+        tput init; tput smcup; tput clear; tput civis
+
+        (lock_draw "$ascii_art" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
+        # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
+        if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
+            while [[ ${opts[l]} ]]; do
+                lock_login "Enter your password:" && break
+                (lock_draw "$ascii_art" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
+            done
+        fi
+        tput rmcup
     else
         # lock without cmd will invoke lock_login as default
         while true; do

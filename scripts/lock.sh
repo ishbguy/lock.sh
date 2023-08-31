@@ -95,12 +95,21 @@ require_func() { require definedf "You need to define funcs" "$@"; }
 require_tool() { require has_tool "You need to install tools" "$@"; }
 inicfg() { require_tool git; git config --file "$@"; }
 
-check_password() { echo "$1" | su -c true - "$USER" &>/dev/null; }
+check_password() {
+    [[ -n $1 ]] || return 1
+    echo "$1" | su -c true - "${2:-$USER}" &>/dev/null
+}
 lock_login() {
-    dialog --clear --erase-on-exit --ascii-lines --output-fd "$1" \
-        --passwordbox "Enter your password:" 10 40
-    echo >&"$1"
-    read -ru "$1" PASS
+    # make a fifo file descriptor to store the user password
+    local passfd="$(tmpfd)"
+    local passfile="$(mktemp -u)"
+    mkfifo "$passfile" || return 1
+    eval "exec $passfd<>$passfile" && rm -rf "$passfile" || return 1
+
+    DIALOGRC="$LOCK_ABS_DIR/dialogrc" dialog --clear --erase-on-exit --ascii-lines \
+        --output-fd "$passfd" --passwordbox "$*" 10 40
+    echo >&"$passfd"
+    read -ru "$passfd" PASS
     check_password "$PASS"
 }
 
@@ -133,28 +142,20 @@ EOF
     trap 'true' SIGTERM SIGINT SIGQUIT SIGHUP
     trap 'true' SIGTSTP SIGTTIN SIGTTOU
 
-    export DIALOGRC="$LOCK_ABS_DIR/dialogrc"
-
-    # make a fifo file descriptor to store the user password
-    local passfd="$(tmpfd)"
-    local passfile="$(mktemp -u)"
-    mkfifo "$passfile" || return 1
-    eval "exec $passfd<>$passfile" && rm -rf "$passfile" || return 1
-
     local start_time="$(date)"
     if [[ $* ]]; then
         (eval "$@")
         # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
         if [[ $(date_cmp "$(date)" "$start_time") -gt $LOCK_LOGIN_TIME ]]; then
             while [[ ${opts[l]} ]]; do
-                lock_login "$passfd" && break
+                lock_login "Enter your password:" && break
                 (eval "$@")
             done
         fi
     else
         # lock without cmd will invoke lock_login as default
         while true; do
-            lock_login "$passfd" && break
+            lock_login "Enter your password:" && break
         done
     fi
 }

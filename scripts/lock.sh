@@ -134,7 +134,7 @@ lock_draw() {
 lock_run() {
     (eval "$*")
     # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-    if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME} ]]; then
+    if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
         while [[ ${opts[l]} ]]; do
             lock_login "Enter your password:" && break
             (eval "$*")
@@ -144,7 +144,7 @@ lock_run() {
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.3.0"
+    local VERSION="v0.4.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
@@ -164,9 +164,9 @@ For examples:
     lock.sh                     # Run without opts and args will show a login screen
     lock.sh cmatrix             # Run cmatrix as lock screen
     lock.sh -l cmatrix          # Run cmatrix as lock screen and need to login to unlock
-    lock.sh -l -t 10 cmatrix    # Run cmatrix and invoke login if run over 10 seconds
+    lock.sh -l -t 10 cmatrix    # Run cmatrix then will invoke login if run over 10 seconds
     lock.sh -a zebra            # Show the 'zebra' ascii art on lock screen
-    lock.sh -d art -a zebra     # Find 'zebra' ascii art in 'art' director and
+    lock.sh -d art -a zebra     # Find 'zebra' ascii art in 'art' directory and
                                 # show it on the lock screen
     lock.sh -s "Hello world!"   # Show the 'Hello world!' string on lock screen
 
@@ -187,10 +187,10 @@ EOF
     trap 'true' SIGTSTP SIGTTIN SIGTTOU
 
     # configure default variables
-    local LOCK_ART_DIR="${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}"
+    local LOCK_ART_DIR="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
     local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
+    local LOCK_START_TIME="$(date)"
 
-    local start_time="$(date)"
     if [[ $* ]]; then
         lock_run "$*"
     elif [[ ${opts[s]} ]]; then
@@ -201,10 +201,10 @@ EOF
         lock_run 'lock_draw "${cur_pos[0]}" "${cur_pos[1]}" "${args[s]}"; read -sr'
         tput rmcup
     elif [[ ${opts[a]} ]]; then
-        local art_dir="${args[d]:-${LOCK_ART_DIR}}"
-        [[ -d $art_dir && -e $art_dir/${args[a]} ]] || return 1
+        [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
+            die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
 
-        local ascii_art="$(cat "$art_dir/${args[a]}")"
+        local ascii_art="$(cat "$LOCK_ART_DIR/${args[a]}")"
         local -a cur_pos=($(cal_draw_pos $(str_sizeof "$ascii_art")))
 
         # init and setting the terminal environment

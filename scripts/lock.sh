@@ -147,10 +147,20 @@ lock_screen() {
         fi
     done
 }
+lock_run() {
+    (eval "$*")
+    # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
+    if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
+        while [[ ${opts[l]} ]]; do
+            lock_login "Enter your password:" && break
+            (eval "$*")
+        done
+    fi
+}
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.5.1"
+    local VERSION="v0.5.2"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
@@ -204,7 +214,7 @@ EOF
         tput init; tput smcup; tput clear; tput civis
         trap 'tput clear' WINCH
         lock_screen "${args[s]}"
-        tput rmcup
+        tput rmcup; tput cnorm
     elif [[ ${opts[a]} ]]; then
         [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
@@ -213,7 +223,7 @@ EOF
         tput init; tput smcup; tput clear; tput civis
         trap 'tput clear' WINCH
         lock_screen "$(cat "$LOCK_ART_DIR/${args[a]}")"
-        tput rmcup
+        tput rmcup; tput cnorm
     else
         # lock without cmd will invoke lock_login as default
         while true; do

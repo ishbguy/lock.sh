@@ -134,7 +134,7 @@ lock_draw() {
 lock_run() {
     (eval "$*")
     # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-    if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
+    if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME} ]]; then
         while [[ ${opts[l]} ]]; do
             lock_login "Enter your password:" && break
             (eval "$*")
@@ -147,13 +147,14 @@ lock() {
     local VERSION="v0.3.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
-$PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string]
+$PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
     
     [cmd]           Run the [cmd] as the lock screen command
     -a <name>       Show the <name> ascii art on lock screen
     -d <dir>        Specify the ascii art director, work with -a option
     -s <string>     Show the <string> on lock screen
     -l              Need to login to unlock the screen
+    -t <sec>        Specify <sec> seconds timer to invoke the login
     -h              Print this help message
     -v              Print version number
     -D              Turn on debug mode
@@ -163,6 +164,7 @@ For examples:
     lock.sh                     # Run without opts and args will show a login screen
     lock.sh cmatrix             # Run cmatrix as lock screen
     lock.sh -l cmatrix          # Run cmatrix as lock screen and need to login to unlock
+    lock.sh -l -t 10 cmatrix    # Run cmatrix and invoke login if run over 10 seconds
     lock.sh -a zebra            # Show the 'zebra' ascii art on lock screen
     lock.sh -d art -a zebra     # Find 'zebra' ascii art in 'art' director and
                                 # show it on the lock screen
@@ -172,17 +174,21 @@ This program is released under the terms of the MIT License.
 EOF
 )
     local -A opts=() args=()
-    pargs opts args 'lhvDa:d:s:' "$@"
+    pargs opts args 'lhvDa:d:s:t:' "$@"
     shift $((OPTIND - 1))
     [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0
     [[ ${opts[v]} ]] && version && return 0
 
-    require_tool dialog
+    require_tool dialog tput
 
     # ignore termination and terminal job controlling signals
     trap 'true' SIGTERM SIGINT SIGQUIT SIGHUP
     trap 'true' SIGTSTP SIGTTIN SIGTTOU
+
+    # configure default variables
+    local LOCK_ART_DIR="${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}"
+    local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
 
     local start_time="$(date)"
     if [[ $* ]]; then
@@ -195,7 +201,7 @@ EOF
         lock_run 'lock_draw "${cur_pos[0]}" "${cur_pos[1]}" "${args[s]}"; read -sr'
         tput rmcup
     elif [[ ${opts[a]} ]]; then
-        local art_dir="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
+        local art_dir="${args[d]:-${LOCK_ART_DIR}}"
         [[ -d $art_dir && -e $art_dir/${args[a]} ]] || return 1
 
         local ascii_art="$(cat "$art_dir/${args[a]}")"

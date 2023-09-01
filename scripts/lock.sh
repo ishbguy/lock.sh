@@ -131,20 +131,21 @@ lock_draw() {
         echo "$line"
     done <<<"$msg"
 }
-lock_run() {
-    (eval "$*")
-    # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-    if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
-        while [[ ${opts[l]} ]]; do
-            lock_login "Enter your password:" && break
-            (eval "$*")
-        done
-    fi
+lock_screen() {
+    while true; do
+        lock_draw "$@"
+        if read -sr -N 1 -t 1; then
+            [[ -n ${opts[l]} ]] || break
+            if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
+                lock_login "Enter your password:" && break
+            fi
+        fi
+    done
 }
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.4.0"
+    local VERSION="v0.5.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
@@ -194,20 +195,19 @@ EOF
     if [[ $* ]]; then
         lock_run "$*"
     elif [[ ${opts[s]} ]]; then
-        # TODO: How to handle WINCH
         # init and setting the terminal environment
         tput init; tput smcup; tput clear; tput civis
-        lock_run 'lock_draw "${args[s]}"; read -sr'
+        trap 'tput clear' WINCH
+        lock_screen "${args[s]}"
         tput rmcup
     elif [[ ${opts[a]} ]]; then
         [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
-        local ascii_art="$(cat "$LOCK_ART_DIR/${args[a]}")"
 
-        # TODO: How to handle WINCH
         # init and setting the terminal environment
         tput init; tput smcup; tput clear; tput civis
-        lock_run 'lock_draw "$ascii_art"; read -sr'
+        trap 'tput clear' WINCH
+        lock_screen "$(cat "$LOCK_ART_DIR/${args[a]}")"
         tput rmcup
     else
         # lock without cmd will invoke lock_login as default

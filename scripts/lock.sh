@@ -120,15 +120,26 @@ str_sizeof() {
         done <<<"$string"
         echo "$max_lines" "$max_cols"
 }
-cal_start_pos() {
+cal_draw_pos() {
     echo "$((($(tput lines) - $1) / 2))" "$((($(tput cols) - $2) / 2))"
 }
 lock_draw() {
-    local msg=$1 x=$2 y=$3
+    local x=$1 y=$2; shift 2;
+    local msg="$*"
     local IFS= ; while read -r line; do
         tput cup "$((x++))" "$y"
         echo "$line"
     done <<<"$msg"
+}
+lock_run() {
+    (eval "$*")
+    # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
+    if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
+        while [[ ${opts[l]} ]]; do
+            lock_login "Enter your password:" && break
+            (eval "$*")
+        done
+    fi
 }
 
 lock() {
@@ -175,49 +186,24 @@ EOF
 
     local start_time="$(date)"
     if [[ $* ]]; then
-        (eval "$@")
-        # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-        if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
-            while [[ ${opts[l]} ]]; do
-                lock_login "Enter your password:" && break
-                (eval "$@")
-            done
-        fi
+        lock_run "$*"
     elif [[ ${opts[s]} ]]; then
-        local -a str_size=($(str_sizeof "${args[s]}"))
-        local -a cur_pos=($(cal_start_pos "${str_size[0]}" "${str_size[1]}"))
+        local -a cur_pos=($(cal_draw_pos $(str_sizeof "${args[s]}")))
 
         # init and setting the terminal environment
         tput init; tput smcup; tput clear; tput civis
-
-        (lock_draw "${args[s]}" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
-        # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-        if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
-            while [[ ${opts[l]} ]]; do
-                lock_login "Enter your password:" && break
-                (lock_draw "${args[s]}" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
-            done
-        fi
+        lock_run 'lock_draw "${cur_pos[0]}" "${cur_pos[1]}" "${args[s]}"; read -sr'
         tput rmcup
     elif [[ ${opts[a]} ]]; then
         local art_dir="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
         [[ -d $art_dir && -e $art_dir/${args[a]} ]] || return 1
 
         local ascii_art="$(cat "$art_dir/${args[a]}")"
-        local -a str_size=($(str_sizeof "$ascii_art"))
-        local -a cur_pos=($(cal_start_pos "${str_size[0]}" "${str_size[1]}"))
+        local -a cur_pos=($(cal_draw_pos $(str_sizeof "$ascii_art")))
 
         # init and setting the terminal environment
         tput init; tput smcup; tput clear; tput civis
-
-        (lock_draw "$ascii_art" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
-        # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-        if [[ $(date_cmp "$(date)" "$start_time") -gt ${LOCK_LOGIN_TIME:-60} ]]; then
-            while [[ ${opts[l]} ]]; do
-                lock_login "Enter your password:" && break
-                (lock_draw "$ascii_art" "${cur_pos[0]}" "${cur_pos[1]}"; read -sr)
-            done
-        fi
+        lock_run 'lock_draw "${cur_pos[0]}" "${cur_pos[1]}" "$ascii_art"; read -sr'
         tput rmcup
     else
         # lock without cmd will invoke lock_login as default

@@ -124,10 +124,10 @@ cal_draw_pos() {
     echo "$((($(tput lines) - $1) / 2))" "$((($(tput cols) - $2) / 2))"
 }
 lock_draw() {
-    local x=$1 y=$2; shift 2;
     local msg="$*"
+    local -a cur_pos=($(cal_draw_pos $(str_sizeof "$msg")))
     local IFS= ; while read -r line; do
-        tput cup "$((x++))" "$y"
+        tput cup "$((cur_pos[0]++))" "${cur_pos[1]}"
         echo "$line"
     done <<<"$msg"
 }
@@ -183,8 +183,8 @@ EOF
     require_tool dialog tput
 
     # ignore termination and terminal job controlling signals
-    trap 'true' SIGTERM SIGINT SIGQUIT SIGHUP
-    trap 'true' SIGTSTP SIGTTIN SIGTTOU
+    trap 'true' TERM INT QUIT HUP
+    trap 'true' TSTP TTIN TTOU
 
     # configure default variables
     local LOCK_ART_DIR="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
@@ -194,22 +194,20 @@ EOF
     if [[ $* ]]; then
         lock_run "$*"
     elif [[ ${opts[s]} ]]; then
-        local -a cur_pos=($(cal_draw_pos $(str_sizeof "${args[s]}")))
-
+        # TODO: How to handle WINCH
         # init and setting the terminal environment
         tput init; tput smcup; tput clear; tput civis
-        lock_run 'lock_draw "${cur_pos[0]}" "${cur_pos[1]}" "${args[s]}"; read -sr'
+        lock_run 'lock_draw "${args[s]}"; read -sr'
         tput rmcup
     elif [[ ${opts[a]} ]]; then
         [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
-
         local ascii_art="$(cat "$LOCK_ART_DIR/${args[a]}")"
-        local -a cur_pos=($(cal_draw_pos $(str_sizeof "$ascii_art")))
 
+        # TODO: How to handle WINCH
         # init and setting the terminal environment
         tput init; tput smcup; tput clear; tput civis
-        lock_run 'lock_draw "${cur_pos[0]}" "${cur_pos[1]}" "$ascii_art"; read -sr'
+        lock_run 'lock_draw "$ascii_art"; read -sr'
         tput rmcup
     else
         # lock without cmd will invoke lock_login as default

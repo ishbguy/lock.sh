@@ -147,6 +147,13 @@ lock_screen() {
         fi
     done
 }
+lock_term() {
+    # init and setting the terminal environment
+    tput init; tput smcup; tput clear; tput civis
+    trap 'tput clear' WINCH
+    lock_screen "$@"
+    tput rmcup; tput cnorm
+}
 lock_run() {
     (eval "$*")
     # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
@@ -160,7 +167,7 @@ lock_run() {
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.5.2"
+    local VERSION="v0.6.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
@@ -210,25 +217,20 @@ EOF
     if [[ $* ]]; then
         lock_run "$*"
     elif [[ ${opts[s]} ]]; then
-        # init and setting the terminal environment
-        tput init; tput smcup; tput clear; tput civis
-        trap 'tput clear' WINCH
-        lock_screen "${args[s]}"
-        tput rmcup; tput cnorm
+        lock_term "${args[s]}"
     elif [[ ${opts[a]} ]]; then
         [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
-
-        # init and setting the terminal environment
-        tput init; tput smcup; tput clear; tput civis
-        trap 'tput clear' WINCH
-        lock_screen "$(cat "$LOCK_ART_DIR/${args[a]}")"
-        tput rmcup; tput cnorm
+        lock_term "$(cat "$LOCK_ART_DIR/${args[a]}")"
     else
-        # lock without cmd will invoke lock_login as default
-        while true; do
-            lock_login "Enter your password:" && break
-        done
+        if has_tool fortune; then
+            lock_term "$(fortune)"
+        else
+            # lock without cmd will invoke lock_login as default
+            while true; do
+                lock_login "Enter your password:" && break
+            done
+        fi
     fi
 }
 

@@ -121,7 +121,12 @@ str_sizeof() {
         echo "$max_lines" "$max_cols"
 }
 cal_draw_pos() {
-    echo "$((($(tput lines) - $1) / 2))" "$((($(tput cols) - $2) / 2))"
+    local lines="$(tput lines)" cols="$(tput cols)"
+    if [[ $lines -lt $1 || $cols -lt $2 ]]; then
+        echo 0 0
+    else
+        echo "$(((lines - $1) / 2))" "$(((cols - $2) / 2))"
+    fi
 }
 lock_draw() {
     local msg="$*"
@@ -145,7 +150,7 @@ lock_screen() {
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.5.0"
+    local VERSION="v0.5.1"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]

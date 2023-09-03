@@ -137,8 +137,16 @@ lock_draw() {
     done <<<"$msg"
 }
 lock_screen() {
+    local n=0
+    local -a msgbox=("$@")
+    local slide_time="$(date)"
     while true; do
-        lock_draw "$@"
+        if [[ $(date_cmp "$(date)" "$slide_time") -gt ${LOCK_SLIDE_TIME} ]]; then
+            slide_time="$(date)"
+            [[ $((++n)) -lt ${#@} ]] || n=0
+            tput clear
+        fi
+        lock_draw "${msgbox[n]}"
         if read -sr -N 1 -t 1; then
             [[ -n ${opts[l]} ]] || break
             if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
@@ -170,14 +178,15 @@ lock() {
     local VERSION="v0.6.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
-$PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
+$PROGNAME [-lhvD] [-c cmd|-a name|-d dir|-t sec] [args...]
     
-    [cmd]           Run the [cmd] as the lock screen command
+    [args..]        Show the args string on lock screen
+    -c <cmd>        Run the [cmd] as the lock screen command
     -a <name>       Show the <name> ascii art on lock screen
     -d <dir>        Specify the ascii art director, work with -a option
-    -s <string>     Show the <string> on lock screen
     -l              Need to login to unlock the screen
     -t <sec>        Specify <sec> seconds timer to invoke the login
+    -s <time>       Slideshow mode, slide every <time> seconds
     -h              Print this help message
     -v              Print version number
     -D              Turn on debug mode
@@ -185,19 +194,20 @@ $PROGNAME [-lhvD] [cmd|-a name|-d dir|-s string|-t sec]
 For examples:
 
     lock.sh                     # Run without opts and args will show a login screen
-    lock.sh cmatrix             # Run cmatrix as lock screen
-    lock.sh -l cmatrix          # Run cmatrix as lock screen and need to login to unlock
+    lock.sh "Hello world!"      # Show the 'Hello world!' string on lock screen
+    lock.sh -c cmatrix          # Run cmatrix as lock screen
+    lock.sh -l -c cmatrix       # Run cmatrix as lock screen and need to login to unlock
     lock.sh -l -t 10 cmatrix    # Run cmatrix then will invoke login if run over 10 seconds
     lock.sh -a zebra            # Show the 'zebra' ascii art on lock screen
     lock.sh -d art -a zebra     # Find 'zebra' ascii art in 'art' directory and
                                 # show it on the lock screen
-    lock.sh -s "Hello world!"   # Show the 'Hello world!' string on lock screen
+    lock.sh -s 5 one two        # slide every 5 seconds
 
 This program is released under the terms of the MIT License.
 EOF
 )
     local -A opts=() args=()
-    pargs opts args 'lhvDa:d:s:t:' "$@"
+    pargs opts args 'lhvDc:a:d:s:t:' "$@"
     shift $((OPTIND - 1))
     [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0
@@ -212,16 +222,21 @@ EOF
     # configure default variables
     local LOCK_ART_DIR="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
     local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
+    local LOCK_SLIDE_TIME="${args[s]:-${LOCK_SLIDE_TIME:-60}}"
     local LOCK_START_TIME="$(date)"
 
-    if [[ $* ]]; then
-        lock_run "$*"
-    elif [[ ${opts[s]} ]]; then
-        lock_term "${args[s]}"
+    if [[ ${opts[c]} ]]; then
+        lock_run "${args[c]}"
     elif [[ ${opts[a]} ]]; then
         [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
         lock_term "$(cat "$LOCK_ART_DIR/${args[a]}")"
+    elif [[ $* ]]; then
+        if [[ ${opts[s]} ]]; then
+            lock_term "$@"
+        else
+            lock_term "$*"
+        fi
     else
         if has_tool fortune; then
             lock_term "$(fortune)"

@@ -37,6 +37,8 @@ the following to your list of TPM plugins in `.tmux.conf`:
 set -g @plugin 'ishbguy/tmux-lock'
 ```
 
+Then hit <kbd>prefix</kbd>+<kbd>I</kbd> to fetch and source the plugin. You should now be able to use this plugin!
+
 ## How to use
 
 See `lock.sh -h`:
@@ -73,8 +75,6 @@ For examples:
 This program is released under the terms of the MIT License.
 
 ```
-
-Then hit <kbd>prefix</kbd>+<kbd>I</kbd> to fetch and source the plugin. You should now be able to use this plugin!
 
 ## License
 

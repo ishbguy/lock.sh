@@ -122,34 +122,59 @@ str_sizeof() {
 }
 cal_draw_pos() {
     local lines="$(tput lines)" cols="$(tput cols)"
-    if [[ $lines -lt $1 || $cols -lt $2 ]]; then
+    if [[ $lines -lt $1 && $cols -lt $2 ]]; then
         echo 0 0
+    elif [[ $lines -lt $1 ]]; then
+        echo 0 "$(((cols - $2) / 2))"
+    elif [[ $cols -lt $2 ]]; then
+        echo "$(((lines - $1) / 2))" 0
     else
         echo "$(((lines - $1) / 2))" "$(((cols - $2) / 2))"
     fi
+}
+lock_draw_pos() {
+    tput cup "$1" "$2"; shift 2
+    echo "$*"
 }
 lock_draw() {
     local msg="$*"
     local -a cur_pos=($(cal_draw_pos $(str_sizeof "$msg")))
     local IFS= ; while read -r line; do
-        tput cup "$((cur_pos[0]++))" "${cur_pos[1]}"
-        echo "$line"
+        lock_draw_pos "$((cur_pos[0]++))" "${cur_pos[1]}" "$line"
+    done <<<"$msg"
+}
+lock_draw_clear() {
+    local msg="$*"
+    local -a cur_pos=($(cal_draw_pos $(str_sizeof "$msg")))
+    local IFS= ; while read -r line; do
+        lock_draw_pos "$((cur_pos[0]++))" "${cur_pos[1]}" "${line//?/ }"
     done <<<"$msg"
 }
 lock_screen() {
-    local n=0
+    local n=0 ctx last_ctx
     local -a msgbox=("$@")
     local slide_time="$(date)"
     while true; do
-        if [[ $(date_cmp "$(date)" "$slide_time") -gt ${LOCK_SLIDE_TIME} ]]; then
+        if [[ $(date_cmp "$(date)" "$slide_time") -ge ${LOCK_SLIDE_TIME} ]]; then
             slide_time="$(date)"
             [[ $((++n)) -lt ${#@} ]] || n=0
             tput clear
         fi
-        lock_draw "${msgbox[n]}"
-        if read -sr -N 1 -t 1; then
+        if [[ ${opts[e]} ]]; then
+            ctx="$(eval echo \""${msgbox[n]}"\")"
+            [[ $ctx != "$last_ctx" ]] && last_ctx="$ctx" && tput clear
+            # if [[ $ctx != "$last_ctx" ]]; then
+            #     # [[ $last_ctx ]] && tput clear || lock_draw_clear "$last_ctx"
+            #     tput clear
+            #     last_ctx="$ctx"
+            # fi
+            lock_draw "$ctx"
+        else
+            lock_draw "${msgbox[n]}"
+        fi
+        if read -sr -N 1 -t 0.1; then
             [[ -n ${opts[l]} ]] || break
-            if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
+            if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
                 lock_login "Enter your password:" && break
             fi
         fi
@@ -165,7 +190,7 @@ lock_term() {
 lock_run() {
     (eval "$*")
     # invoke lock_login if LOCK_LOGIN_TIME out and run with -l option
-    if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -gt ${LOCK_LOGIN_TIME} ]]; then
+    if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
         while [[ ${opts[l]} ]]; do
             lock_login "Enter your password:" && break
             (eval "$*")
@@ -185,6 +210,7 @@ $PROGNAME [-lhvD] [-c cmd|-a name|-d dir|-t sec] [args...]
     -a <name>       Show the <name> ascii art on lock screen
     -d <dir>        Specify the ascii art director, work with -a option
     -l              Need to login to unlock the screen
+    -e              Make shell expansion when lock screen
     -t <sec>        Specify <sec> seconds timer to invoke the login
     -s <time>       Slideshow mode, slide every <time> seconds
     -h              Print this help message
@@ -193,21 +219,22 @@ $PROGNAME [-lhvD] [-c cmd|-a name|-d dir|-t sec] [args...]
 
 For examples:
 
-    lock.sh                     # Run without opts and args will show a login screen
-    lock.sh "Hello world!"      # Show the 'Hello world!' string on lock screen
-    lock.sh -c cmatrix          # Run cmatrix as lock screen
-    lock.sh -l -c cmatrix       # Run cmatrix as lock screen and need to login to unlock
-    lock.sh -l -t 10 cmatrix    # Run cmatrix then will invoke login if run over 10 seconds
-    lock.sh -a zebra            # Show the 'zebra' ascii art on lock screen
-    lock.sh -d art -a zebra     # Find 'zebra' ascii art in 'art' directory and
-                                # show it on the lock screen
-    lock.sh -s 5 one two        # slide every 5 seconds
+    lock.sh                         # Run without opts and args will show a login screen
+    lock.sh "Hello world!"          # Show the 'Hello world!' string on lock screen
+    lock.sh -c cmatrix              # Run cmatrix as lock screen
+    lock.sh -l -c cmatrix           # Run cmatrix as lock screen and need to login to unlock
+    lock.sh -l -t 10 cmatrix        # Run cmatrix then will invoke login if run over 10 seconds
+    lock.sh -a zebra                # Show the 'zebra' ascii art on lock screen
+    lock.sh -d art -a zebra         # Find 'zebra' ascii art in 'art' directory and
+                                    # show it on the lock screen
+    lock.sh -s 5 one two            # Slide every 5 seconds
+    lock.sh -e '\$(date +%H:%M)'     # Dynamic expansion the date output
 
 This program is released under the terms of the MIT License.
 EOF
 )
     local -A opts=() args=()
-    pargs opts args 'lhvDc:a:d:s:t:' "$@"
+    pargs opts args 'lehvDc:a:d:s:t:' "$@"
     shift $((OPTIND - 1))
     [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0

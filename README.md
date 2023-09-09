@@ -1,11 +1,13 @@
-# lock.sh
+# [lock.sh](https://github.com/ishbguy/lock.sh)
 
 A terminal lock screen tool written in shell, which integrates with tmux as a plugin.
 
+![`lock.sh -e '$(date +%H:%M:%S | figlet)'`](screenshots/lock-date.png)
+
 ## Prerequisites
 
-- tput
-- dialog
+- `tput`
+- `dialog`
 
 ## Features
 
@@ -14,6 +16,7 @@ A terminal lock screen tool written in shell, which integrates with tmux as a pl
 - Customized ascii art
 - Slideshow mode
 - Dynamic shell expansion
+- Integrate with `tmux`
 
 ## Installation
 
@@ -25,13 +28,50 @@ Clone the repo:
 git clone https://github.com/ishbguy/lock.sh /path/to/lock.sh
 ```
 
-### Integration with tmux
+### Integration with `tmux`
 
 If using [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm), you need to add
 the following to your list of TPM plugins in `.tmux.conf`:
 
 ```
 set -g @plugin 'ishbguy/tmux-lock'
+```
+
+## How to use
+
+See `lock.sh -h`:
+
+```
+lock.sh v0.6.0
+lock.sh [-lhvD] [-c cmd|-a name|-d dir|-t sec] [args...]
+    
+    [args..]        Show the args string on lock screen
+    -c <cmd>        Run the [cmd] as the lock screen command
+    -a <name>       Show the <name> ascii art on lock screen
+    -d <dir>        Specify the ascii art director, work with -a option
+    -l              Need to login to unlock the screen
+    -e              Make shell expansion when lock screen
+    -t <sec>        Specify <sec> seconds timer to invoke the login
+    -s <time>       Slideshow mode, slide every <time> seconds
+    -h              Print this help message
+    -v              Print version number
+    -D              Turn on debug mode
+
+For examples:
+
+    lock.sh                         # Run without opts and args will show a login screen
+    lock.sh "Hello world!"          # Show the 'Hello world!' string on lock screen
+    lock.sh -c cmatrix              # Run cmatrix as lock screen
+    lock.sh -l -c cmatrix           # Run cmatrix as lock screen and need to login to unlock
+    lock.sh -l -t 10 cmatrix        # Run cmatrix then will invoke login if run over 10 seconds
+    lock.sh -a zebra                # Show the 'zebra' ascii art on lock screen
+    lock.sh -d art -a zebra         # Find 'zebra' ascii art in 'art' directory and
+                                    # show it on the lock screen
+    lock.sh -s 5 one two            # Slide every 5 seconds
+    lock.sh -e '$(date +%H:%M)'     # Dynamic expansion the date output
+
+This program is released under the terms of the MIT License.
+
 ```
 
 Then hit <kbd>prefix</kbd>+<kbd>I</kbd> to fetch and source the plugin. You should now be able to use this plugin!

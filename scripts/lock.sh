@@ -158,16 +158,16 @@ lock_screen() {
         if [[ $(date_cmp "$(date)" "$slide_time") -ge ${LOCK_SLIDE_TIME} ]]; then
             slide_time="$(date)"
             [[ $((++n)) -lt ${#@} ]] || n=0
+            [[ ${opts[e]} == "S" ]] && ctx="$(eval echo \""${msgbox[n]}"\")"
             tput clear
         fi
         if [[ ${opts[e]} ]]; then
-            ctx="$(eval echo \""${msgbox[n]}"\")"
+            if [[ ${opts[e]} == "S" ]]; then
+                [[ $last_ctx ]] || ctx="$(eval echo \""${msgbox[n]}"\")"
+            else
+                ctx="$(eval echo \""${msgbox[n]}"\")"
+            fi
             [[ $ctx != "$last_ctx" ]] && last_ctx="$ctx" && tput clear
-            # if [[ $ctx != "$last_ctx" ]]; then
-            #     # [[ $last_ctx ]] && tput clear || lock_draw_clear "$last_ctx"
-            #     tput clear
-            #     last_ctx="$ctx"
-            # fi
             lock_draw "$ctx"
         else
             lock_draw "${msgbox[n]}"
@@ -200,19 +200,20 @@ lock_run() {
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.6.0"
+    local VERSION="v0.7.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
-$PROGNAME [-lhvD] [-c cmd|-a name|-d dir|-t sec] [args...]
+$PROGNAME [-lehvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
     
     [args..]        Show the args string on lock screen
     -c <cmd>        Run the [cmd] as the lock screen command
     -a <name>       Show the <name> ascii art on lock screen
     -d <dir>        Specify the ascii art director, work with -a option
-    -l              Need to login to unlock the screen
     -e              Make shell expansion when lock screen
+    -l              Need to login to unlock the screen
     -t <sec>        Specify <sec> seconds timer to invoke the login
-    -s <time>       Slideshow mode, slide every <time> seconds
+    -s <sec>        Slideshow mode, slide every <sec> seconds
+    -S <sec>        Shuffle slideshow mode, slide every <sec> seconds
     -h              Print this help message
     -v              Print version number
     -D              Turn on debug mode
@@ -228,19 +229,22 @@ For examples:
     lock.sh -d art -a zebra         # Find 'zebra' ascii art in 'art' directory and
                                     # show it on the lock screen
     lock.sh -s 5 one two            # Slide every 5 seconds
+    lock.sh -S 5                    # Shuffle every 5 seconds without args, it will try fortune
+                                    # by default, or will invoke login screen
+    lock.sh -S 5 one two three      # Shuffle every 5 seconds with args
     lock.sh -e '\$(date +%H:%M)'     # Dynamic expansion the date output
 
 This program is released under the terms of the MIT License.
 EOF
 )
     local -A opts=() args=()
-    pargs opts args 'lehvDc:a:d:s:t:' "$@"
+    pargs opts args 'lehvADc:a:d:s:S:t:' "$@"
     shift $((OPTIND - 1))
     [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0
     [[ ${opts[v]} ]] && version && return 0
 
-    require_tool dialog tput
+    require_tool dialog tput shuf
 
     # ignore termination and terminal job controlling signals
     trap 'true' TERM INT QUIT HUP
@@ -249,7 +253,7 @@ EOF
     # configure default variables
     local LOCK_ART_DIR="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
     local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
-    local LOCK_SLIDE_TIME="${args[s]:-${LOCK_SLIDE_TIME:-60}}"
+    local LOCK_SLIDE_TIME="${args[S]:-${args[s]:-${LOCK_SLIDE_TIME:-60}}}"
     local LOCK_START_TIME="$(date)"
 
     if [[ ${opts[c]} ]]; then
@@ -259,14 +263,32 @@ EOF
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
         lock_term "$(cat "$LOCK_ART_DIR/${args[a]}")"
     elif [[ $* ]]; then
-        if [[ ${opts[s]} ]]; then
+        if [[ ${opts[S]} ]]; then
+            local -a args_array=("$@") shuf_array=()
+            for i in $(shuf -e $(eval "echo {0..$((${#args_array[@]} - 1))}")); do
+                shuf_array+=("${args_array[$i]}")
+            done
+            lock_term "${shuf_array[@]}"
+        elif [[ ${opts[s]} ]]; then
             lock_term "$@"
         else
             lock_term "$*"
         fi
     else
         if has_tool fortune; then
-            lock_term "$(fortune)"
+            if [[ ${opts[S]} ]]; then
+                if [[ ${opts[A]} ]]; then
+                    local -a ascii_art=($LOCK_ART_DIR/*) shuf_art=()
+                    for i in $(shuf -e $(eval "echo {0..$((${#ascii_art[@]} - 1))}")); do
+                        shuf_art+=("$(cat "${ascii_art[$i]}")")
+                    done
+                    lock_term "${shuf_art[@]}"
+                else
+                    opts[e]=S; lock_term '$(fortune)'
+                fi
+            else
+                lock_term "$(fortune)"
+            fi
         else
             # lock without cmd will invoke lock_login as default
             while true; do

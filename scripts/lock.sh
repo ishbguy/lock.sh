@@ -244,14 +244,14 @@ EOF
     [[ ${opts[h]} ]] && usage && return 0
     [[ ${opts[v]} ]] && version && return 0
 
-    require_tool dialog tput shuf
+    require_tool dialog tput shuf find head
 
     # ignore termination and terminal job controlling signals
     trap 'true' TERM INT QUIT HUP
     trap 'true' TSTP TTIN TTOU
 
     # configure default variables
-    local LOCK_ART_DIR="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../../arttime/share/arttime/textart}}"
+    local LOCK_ART_DIR="${args[d]:-${LOCK_ART_DIR:-$LOCK_ABS_DIR/../asciiarts}}"
     local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
     local LOCK_SLIDE_TIME="${args[S]:-${args[s]:-${LOCK_SLIDE_TIME:-60}}}"
     local LOCK_START_TIME="$(date)"
@@ -278,11 +278,11 @@ EOF
         if has_tool fortune; then
             if [[ ${opts[S]} ]]; then
                 if [[ ${opts[A]} ]]; then
-                    local -a ascii_art=($LOCK_ART_DIR/*) shuf_art=()
-                    for i in $(shuf -e $(eval "echo {0..$((${#ascii_art[@]} - 1))}")); do
-                        shuf_art+=("$(cat "${ascii_art[$i]}")")
+                    local -a ascii_art=($(find $LOCK_ART_DIR -type f | shuf | head -n 25)) ascii_art_text=()
+                    for f in "${ascii_art[@]}"; do
+                        ascii_art_text+=("$(cat "$f")")
                     done
-                    lock_term "${shuf_art[@]}"
+                    lock_term "${ascii_art_text[@]}"
                 else
                     opts[e]=S; lock_term '$(fortune)'
                 fi

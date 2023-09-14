@@ -8,6 +8,8 @@ A terminal lock screen tool written in shell, which integrates with tmux as a pl
 
 - `tput`
 - `dialog`
+- `shuf`
+- `find`
 
 ## Features
 
@@ -44,17 +46,18 @@ Then hit <kbd>prefix</kbd>+<kbd>I</kbd> to fetch and source the plugin. You shou
 See `lock.sh -h`:
 
 ```
-lock.sh v0.6.0
-lock.sh [-lhvD] [-c cmd|-a name|-d dir|-t sec] [args...]
+lock.sh v0.7.0
+lock.sh [-lehvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
     
     [args..]        Show the args string on lock screen
     -c <cmd>        Run the [cmd] as the lock screen command
     -a <name>       Show the <name> ascii art on lock screen
     -d <dir>        Specify the ascii art director, work with -a option
-    -l              Need to login to unlock the screen
     -e              Make shell expansion when lock screen
+    -l              Need to login to unlock the screen
     -t <sec>        Specify <sec> seconds timer to invoke the login
-    -s <time>       Slideshow mode, slide every <time> seconds
+    -s <sec>        Slideshow mode, slide every <sec> seconds
+    -S <sec>        Shuffle slideshow mode, slide every <sec> seconds
     -h              Print this help message
     -v              Print version number
     -D              Turn on debug mode
@@ -70,10 +73,12 @@ For examples:
     lock.sh -d art -a zebra         # Find 'zebra' ascii art in 'art' directory and
                                     # show it on the lock screen
     lock.sh -s 5 one two            # Slide every 5 seconds
+    lock.sh -S 5                    # Shuffle every 5 seconds without args, it will try fortune
+                                    # by default, or will invoke login screen
+    lock.sh -S 5 one two three      # Shuffle every 5 seconds with args
     lock.sh -e '$(date +%H:%M)'     # Dynamic expansion the date output
 
 This program is released under the terms of the MIT License.
-
 ```
 
 ## License

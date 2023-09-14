@@ -1,0 +1,9 @@
+           TTTTTTTTTT  RRRRRRR    IIIIIIIIII   OOOOOOO   MM     MM  PPPPPPP    HH     HH  EEEEEEEEE
+           TTTTTTTTTT  RRRRRRRR   IIIIIIIIII  OOOOOOOOO  MMM   MMM  PPPPPPPP   HH     HH  EEEEEEEEE
+               TT      RR     RR      II      OO     OO  MMMM MMMM  PP     PP  HH     HH  EE
+               TT      RR     RR      II      OO     OO  MM MMM MM  PP     PP  HH     HH  EE
+               TT      RRRRRRRR       II      OO     OO  MM  M  MM  PPPPPPPP   HHHHHHHHH  EEEEEEEE
+               TT      RR  RR         II      OO     OO  MM     MM  PP         HH     HH  EE
+               TT      RR   RR        II      OO     OO  MM     MM  PP         HH     HH  EE
+               TT      RR    RR   IIIIIIIIII  OOOOOOOOO  MM     MM  PP         HH     HH  EEEEEEEEE
+               TT      RR     RR  IIIIIIIIII   OOOOOOO   MM     MM  PP         HH     HH  EEEEEEEEE

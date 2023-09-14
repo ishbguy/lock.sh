@@ -1,0 +1,71 @@
+                                   *X#XX*                                
+                                *##XXXXXX##                              
+                                ##XXXXXXXX##*      *XXX##*               
+                               X##XXX##XXXXX#    X#XXXXX#X#*             
+                               *#XXX#**##XXX#   X#XXXXXXXXX#*            
+                               #XX##    XXXX#*  #XXXXXXXXXX##            
+                              *XXX*   *######* *XXXX####XXXX##           
+                              *XXX*   *#XXXX##*XXXX#X**##XXX##           
+                              #XXX* X######XXX##XX#*    *XXXX#           
+                              XXXX**XXXXXXXXXXX#XXX      XXXX#           
+                              *XXX#####XXXXXXXX#XX       XXXX#           
+                               XXXX##XXXXXXXXXXXXX       XXXX#           
+                               #XX##XXXXXXXXXXXXXX *    *XXX##           
+                                *#XXXXXXXXXXXXXXXXX#   X#XX###           
+                                ##XXXXXXXXXXXXXXXXX#***#XXX##*           
+                               #XXXXXXXXXXXXXXXXXXXXXXXXX##*             
+                              XXXXXXXXXXXXXXXXXXXXXXXXX###X              
+                             *#XXXXXXXXXXXXXXXXXXXXXX####*               
+                             #XXXXXXXXXXXXXXXXXXXXXXXXX##*               
+                             XXXXXXXXXXXXXXXXXXXXXXXXXX##X               
+                            #XXXXXXXXXXXXXXXXXXXXXXXXXXX##*              
+                           *#XXXX#XXX#XXXXXXXXXXXXXXXX#X##*              
+                           #XXXX##XX##XXXXXXXXXXXXXXXX#X##X              
+                           #XXXX##X###XXXXXXXXXXXXXXXXX###X              
+                           #XXXXXXX##XXXXXXXXXXXXXXXXXX###X              
+                           #XXX####XXXXXXXXXXXXXXXXXXXX###X              
+                           #XX#   *#XXXXXXXXXXXXXXXXXXX###*              
+                         X##X###** *#XXXXXXXXXXXX#########               
+                        X#X##########XXXXXXXXXXX###XXX###*               
+                        #XXX#########XXXXXXXXXX##XXXXXXX#X               
+                       XXXXXX#XX####XXXXXXXXXX##XXXXXXXXXX#              
+                       #XXXXX##XXXXXXXXXXXXXX##XXXX#X##XXXX*             
+                      X#XXXXX##X###X###XXXXXX#XXX#     ##XX#*            
+                 **   X#XXXXX##XXXXXX###XXXX##XX#*     *#XX#X            
+               ##XXX#*X#XXXX#XXXXXXXXXXXXXXXXXXX*       *XX##            
+               #XXXX##X#XXX##XXXXXXXXXXXXXXXXXXX        *XX##            
+              #XXXXXX#*#####XX###XXXXXXXXXXXXXXX        *XX##            
+             #XXXXXXXX#*###X#XXXXX#XXXXXXXXXXXXX        *XX##            
+             #XXXXXXXX#######XXXXX##XXXXXXXXXXXX        #XX#X            
+            *XXXXXXXXXXX##XXXX*XXXX#XXXXXXXXXXXX#*     ##XX#*            
+            #XXXXXXXXXXX#X#XX* #XXXX#XXXXXXXXXXXX#*   *#XX##             
+           *#XXXXXXXXX##X#XXX   #XXXX#XXXXXXXXXXXXX##XXXX##              
+           X#XXXXXXXXX####X#*   #XXXXXX##XXXXX#XXXXXXXXX###              
+           X#XXXXXXXXX###XXX    #XXXXX#X#XXXXXX##XXXXXX##X               
+           ##XXXXXXXX##X#XX     XXXXXXXX#XXXXXXX########                 
+           ##XXXXXXXX##XXXX     #XXXXXXXXXXXXXXX########*                
+           ##XXXXXXX##X#XX#     #XXXXXXXXXXXXXXXXXXX#####                
+           X#XXXXXXX##X#XXX    *#XXXXXXXXXXXXXXXXXXXX####                
+           *#XXXXXXX##X#XX*    *#XXXXXXXXXXXXXXXXXXXX####                
+            ##XXXXXX####X#*    #XXXXXXXXXXXXXXXXXXXXX####                
+            X##XXXXX####X#*    XXXXXXXXXXXXXXXXXXXXXX###*                
+          *XX###########XX*  *XXXXXXXXXXXXXXXXXXXXXX###*                 
+          ##############XXX  *#XXXXXXXXXXXXXXXXXXX#####                  
+     *XXXXXXXXX######XX#XXX**XXXXX#######################XXXXXXXXX       
+    XXXXXXXXXXXXXXXXXXXX#XX#XXXXX########################XXXXXXXXXX*     
+   XXXXX             *X###XXXXX############XXXX#*******         XXXXX    
+  XXX*       ***####X############X         *#                     XXXX   
+ XXX*        #########**#######*         ####                      XXX*  
+ XX*          ###  *##*                  ####                       *XX  
+ XX           *##  *##*  *###*    *###   *### *###  ####*###*        XX  
+*XX           *##  *##* ######*  *#####  *### #### *####*###*        XX  
+*XX           *####### ###**### ###*####**######    ####*##          XX* 
+*XX           *######* ###**###*###**###**######*   *######          XX* 
+*XX           ###     *#### ###*#### ###**########   *####           XX* 
+*XX           ###      #### ###*####*### *###*####    ####           XX  
+ XX*         #####*     #####*   *####*  ####  ####**  ##           XXX  
+ XXX*         ****       ****     ****   ****   *** ## ##          *XXX  
+ *XXX                                              *##*##          XXX*  
+   XXX*                                             ###          *XXX    
+   XXXXX**                                                    **XXXX*    
+      ************************************************************

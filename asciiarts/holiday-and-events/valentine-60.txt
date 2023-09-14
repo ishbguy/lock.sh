@@ -1,0 +1,9 @@
+LLL          OOOOOOOO    VV       VV  EEEEEEEEEE
+LLL         OOOOOOOOOO   VV       VV  EEEEEEEEEE
+LLL         OO      OO   VV       VV  EE
+LLL         OO      OO   VV       VV  EE
+LLL         OO      OO   VV       VV  EEEEEEE
+LLL         OO      OO    VV     VV   EE
+LLL         OO      OO     VV   VV    EE
+LLLLLLLLLL  OOOOOOOOOO      VV VV     EEEEEEEEEE
+LLLLLLLLLL   OOOOOOOO         V       EEEEEEEEEE

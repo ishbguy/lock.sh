@@ -1,0 +1,31 @@
+New Zealand
+North Island New Zealand:
+                -                                  0 = Wellington
+                \ \                                1 = Paraparaumu
+                /    \                             2 = Palmerston North
+                 \    \                            3 = Hastings / Napier
+                  \    \                               (twin cities)
+                   \   /                           4 = Wairoa
+                    `  \                           5 = Gisborne
+                     D E                           6 = Te Karaka
+                     |   \                         7 = Whakatane
+                     |     \  ||                   8 = Murupara
+                     |      | ||                   9 = Rotorua
+                     |  C B     \                  A = Tokoroa
+                    /             \                B = Morrinsville
+                    |               \    ---\      C = Hamilton
+                   /       A     9  7 -/     |     D = Auckland
+                  -               8     6   /      E = Devonport
+                /                         /
+            /                           5|
+           |                             |    
+            \ -                     4/ - -    
+                \                 |           
+                  \                \          
+                   \              3/          
+                    |  2        /             
+                   /          /               
+                  /        /                  
+                  |      /                    
+                  |1   /                      
+                  \0 /

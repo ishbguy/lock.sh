@@ -1,0 +1,165 @@
+                              _,aaddd8888888bbbaa,_
+                            ,d888888888888888888888b,
+                          ,d8888888888888888888888888b,
+                        ,d8888888888888888I888888888888,
+                       ,8888888888888888888I888888888888,
+                      ,888888888888888888888I888888888888,
+                     ,88888888888888888888888I888888888888,
+                    ,8888888888888888888888888I88888888888b
+                   ,888888888888888888888888888I88888888888,
+                   d888888888888888888888888888I888888888888
+                  ,888888888888888888888888888I8888888888888,
+                  d8888888888888""Y88888888P"'Y8888888888888b
+                 ,8888888888888'  __`""""''   __`"""' `888888
+                 d8888888888888  `""""""     `""""""   888888
+                ,88888888888888    ggg, \   /  ,ggg    88888P
+               ,d88888888888888    `Y8P  I     88P'    88888'
+               d888888888888888          I            ,88888
+               8888888888888888         .f  .         d88888
+               8888888888888888,      / (a_a) \      ,888888
+               Y888888888888888b    /           \   ,8888888,
+               `8888888888888888      ,ad8a8ba,    ,88888888b
+                `888888888888888b      "Y888P"    ,8888888888
+                 `888888888888888b,              ,88888888888,
+                  `Y888888888888888b,          ,d888888888888b
+                  ,d88888888888888b`Yb_      _dP88888888888888
+               ,ad88888888888888888b `"YaaaaP"',88888888888888
+              d888888888888888888888,          d8888888888888P
+             d8888888888888888888888b          8888888888888P'
+             888888888888888888888888          888888888888P'
+             8888888PP"""""8888888888b,        Y8888888888P
+             Y88P"'       d8888888888,"Ya,   ,aPY888888888I
+             ,8'          Y8888888888b  `"Y8P"' `888888888I
+             d'           `88888888888    |o|,   8888888888b,
+            ,P             888888888P'   ,d |b,  88888888888b,
+            d'             `Y88888P'    ,d|  |b, 888888888888b,
+           ,P                `""' "b,   d'|  |`b 8888888888888b,
+           d'                       "b,,I | O| I,d8888888888888b
+           8                          "Y'  |  |`Y"Y8888888888888
+           8                               |  |    "Y8888888888P
+           8                  ,8            |  |     `"Y8888PP"
+          ,P                  d'            |  |         Y,
+          d'                 ,P              |  |        `b
+          8     b            d'              | O|         8,
+          8     8           ,8                |  |        `Y,
+          8     Y,          dP                |  |         `b
+         ,P     Ib         ,8'                 |  |         Y,
+         d'     `8,        dP                  |  |         Ib
+         8       Ib        8'                   |  |        `Y,
+         8       `Y,       8                    |  |         Ib
+         8        Ib       8                     | O|        `8
+         8        `Y,      8                     |  |         8
+         8         `8,     Y,                    |  |         8
+         8          `8,    Ib b,                 |  |        ,P
+         8           `8,   `8 `Ybaa,            |  |        ,d'
+         8            `Yb,  8    ``Ya,          |  |       ,d'
+         Y,             "8, 8       `8,        | O|      ,d"
+         Ib     8,        "b8        `8,      |  |     ,d"
+         `8     `8,        `8         `b     |  |    ,d"
+          8      `Y,        8          8     |  |   d"
+          Y,       "8,      8,         Y,   |  |  ,d8
+          I8        `Yba,_  `Y,        `b, |  |  ,P'8
+          `8,          `""Ybad8,        `b,| O| ,8  8
+           Ib               `"Y8,        `Y  | ,8'  8
+           ,8                  "8,        |  | d'   8
+           d8,                  `8,       | | ,P   ,P
+          ,8'8,                  `8,      | |,8'   d'
+         ,8bgYb                   `b,     | |dP    8
+        ,8:::I8,                   `b,    |O|8'    8
+       ,8::::"Y8,                   `Y,   | dI     8
+      ,8:::::::"Yb,                  `Ybgggd8'    ,P
+     ,8::::::::::"Ya                  `8;::;P     d'
+    ,8:::::::::::::"Ya,                `8;;8'     8
+   ,8::::::::::::::::"Yb,_              `Y8'      8
+   d::::::::::::::::::::"Yb,_             "b     ,P
+  ;P:::::::::::::::::::::::"Yb,_           "Y,   d'
+ ,8:::::::::::::::::::::::::::"Yba        ,8"Y,  8
+ d:::::::::::::::::::::::::::::::Y8b,   ,8"   "Y,8
+ 8::::::::::::::::::::;gaaadPP"""""Y8b,8"      `Y8
+ 8:::::::::::::::;adP"":::::::::::::::"Yb,       YIba,_
+ 8:::::::::::;aP"8"::::::::::::::::::::::"Ya,   ,8"8[:Y8ba,
+ Y;:::::::::::::8":::::::::::::::::::::::::"Yb,8"  `"Yb;:"Y8ba,
+ `b;:::::::::::::::::::::::::::::::::::::::::"Yb,     `"Yb:::"Y8ba,
+  `b;::::::::::::::::::::::::::::::::::::::::::"Yb,       "Yb;:::d88ba
+   `b;:::::::::::::::::::::::::::::::::::::;ggad8bYb,     g,`"8P"" `"Yba,
+    `b;:::::::::::::::::::::::::::::::::;dP"'    `""Yb, b, "b,`Ya,    `"Yb
+      "b;:::::::::::::::::::::::::::::;8"'           "Yb,"b, "b,"8,     `Yb
+       `Yb;:::::::::::::::::::::::::;8"                "Yb,"b,`8,`P      `Yb
+         "Yb;::::::::::::::::::::::aP'                   "Yb`b,`Id'       `8
+        ,dH:8ba;:::::::::::::::::;8"                       "Ybdgd'         8
+       ,HHHHHH:8ba;:::::::::::::;8'                          "Yb,         ,P
+       HHHHHHHHHHH:8b;::::::::::d'                             "Yb       ,8
+       `HHHHHHHHHHHHH:8b;:::::::8                                "8,    ,8'
+         `HHHHHHHHHHHHHH:8b;::::8                                 `Yb   d'
+            `"HHHHHHHHHHHHH:8b;:8,                                  "8,,P
+                HHHHHHHHHHHHH:Yb:b                                   `Y8'
+               ,HHHHHHH       `"88b,_                                  Yb,
+               IHH HHHI           `""Yb,_                               "8,
+              ,HHI HHH'                `"Yba,_                           Ib
+              IHH' HHH                      `"Y8b,                       `8
+             ,HHI ,HHH                          "Y8b,                     8
+             IHH' IHHH                           ,8 Y8                   ,P
+             HHH  HHHH                          ,8  I8                  ,8'
+            ,HHHH:HHHI:HHHHHHHHHHHHHHHHHHHHHHHH;8' ,8'                 ,8'
+            IHHH:IHHH:HHHHHHHHHHHHHHHHHHHHHHHH;8' ,8'                  8
+           ,HHI  HHHH                        ,8' ,8'                  ,P
+           IHH'  HHHH                       ,8' ,8'                  ,8'
+           HHH  ,HHHH                      ,8' ,8'                  ,8'
+          ,HHI  IHHHI                      d, ,8'                  ,8'
+          IHH'  HHHH'                     ,8 ,8'                  ,8'
+         ,HHH   HHHH                      d',8'                   dP
+         IHHI  ,HHHH                     .8,8'                    8'
+         HHH'  IHHHHHHHHHHHHHHHHHHHHHHHH:8:8'                    dP
+        ,HHH   HHHHHHHHHHHHHHHHHHHHHHHHH;8dP                    ,8
+        IHHH   HHHH                    ,8:8'                    8'
+        HHHI  ,HHHH                    d8dP                    ,P
+       ,HHH'  IHHHI                   ,8'8'                   ,8'
+       IHHH,  HHHH'                   d'dP                   ,8'
+       HHHHH, HHHH                   ,8,8'                  ,8'
+      ,HHHHHH,HHHH                  ,8'dP                  ,8'
+      IHH'`HHHHHHH                 _8',8'                  8:
+      HHH  `HHHHHI           ,d8888P" dP                  ,P:
+     ,HHH   `HHHH'          dP"'      8'                  8:H
+     IHHI    HHHH         ,8"         8                  dP:H
+    ,HHH'   ,HHHH        ,8'          8                 ,8:HH
+    IHHHHHH:IHHHI:HHHHHH:8'           8                ,8:HHH
+    HHHHHHH:HHHH:HHHHHHH:8            8               ,8'IHHH,
+   ,HHI    IHHH'         8,           8               d' `HHHI
+   IHH'    HHHH          `8,          8,              8,  HHHH
+  ,HHH    ,HHHI           `8          8I             ,PH  HHHH
+  IHHI    IHHH'           ,8          Yb             d:H  HHHH
+  HHH'    HHHH           ,8'          `8             8:H  IHHH,
+ ,HHH     HHHH          ,8'            8             8:H  `HHHI
+ IHHI     HHHH         ,8'            ,8             8:H   HHHH
+ HHH'     HHHHHHHHHHHH:8'            ,8'            ,P:HHHHHHHH,
+ HHH     ,HHHHHHHHHHH:dP           ,8P'             d:HHHHHHHHHI
+,HHI     IHHH         8'          ,8P'              8  HH   HHHH
+IHH'     HHHI        ,8          ,8P'               8  HH   HHHH
+HHH      HHH'        dP        ,88P'                8  HH   HHHH
+HHH     ,HHH        ,8'      ,d88P'                 8  IH,  HHHH
+XXX     IHHH        dP     ,dP'I8'                 ,P  `HH  IHHH,
+        HHHI       ,8'    ,8'  I8                  d'   HH  `HHHI
+        HHH'       I8     8'   I8                 ,8    HH   HHHH
+       ,HHH        I8    ,8    `8,                d'    HH   IHHH
+       IHHI        I8    dP     Yb               ,8     XX   `HHH
+       HHH'        `8b,_,8'     `8              ,8'           HHH,
+       HHH           "Y8P"       8              d'            HHHI
+      ,HHI                       8             ,8             IHHH
+      IHH'                      ,8             8'             `HHH
+      HHH                       IP            ,P               HHH,
+      HHH                       8'            d'               IHHI
+     ,HHI                       8             8                `HHH
+     IHH'                      ,8             8                 HHH
+     HHH                       dP             8                 HHH,
+     HHH                       8'             8                 IHHI
+    ,HHI                       8 ,P          ,P                 `HHH
+    IHH'                       8-d',P        d'                  HHH
+    HHH                        Yb8-d',P     ,P                   HHH
+    HHH                        `Yb,8_d' d'  d'                   IHH,
+    HHH                         `Y8',8_,P   8                    `HHI
+    HHH                           `Y8' d'-._8                     HHH
+    XXX                             "Yb8'  ,8                     HHH
+                                      "Y888P'                     IHH,
+                                                                  `HHI
+                                                                   HHH
+                                                                   XXX

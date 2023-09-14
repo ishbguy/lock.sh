@@ -1,0 +1,146 @@
+                                                                                ;  .+X=  ;
+                                                                                ; ;####= +
+                                                                                ;+######+M
+                                                        ;M+++                   .########.
+                                                          =;X=                  X########+
+                                                            ;M;                ;##########.
+                                                             ;X=               X##########=                     .
+                                                               MM;            .#M#########X                    .=
+                                                                +M+           =#MMM####MM#+                 .+MM;
+                                                                 ;X#=.        =#MM#M#MMMM#;                +M; .
+                                                                   =#M        =##MMMMMMMM#;               XM=
+                                                                    .M.       =#####M#####.            .+M+.
+                                                                     #.        ######M###X           .;MX=
+                                                                     MM        .+#######=         .XM#X
+                                                                     ;#=         ;=##=;;         .MM+.
+                                                                      M#.        ;M#M.           M;
+                                                                      ;#M       ;#####X         ;M
+                                                                       +#=     ;###M#M#.       .M.
+                                                                        X#=    X##MMMM#+       M=
+                                                                         =#+; =##MMMMMMM     ;M+
+                                                                 .;.      X######MMMMM##   .+#X
+                                                                =#MM.      +M####MMMM###M.=M#+
+                                                              .XM..XM=       =M##M#MM#######=
+                                                             ;MM;   M##+      .X#####M+====.
+                                                            =M=      X##M;.  ;;######+           .+;
+                                                         ;+M=.        .;X#M######MM###=..  ..;++M#XX.
+                                                       =M#=              . +####MMMM#####MM######. .M
+                                                     =XX=                    X##MMMM#####MXXX=.    .#+
+                                                    M.                       M##MXMM##XMM.          =#.
+                                                  XX                       ;=####MMM##+              XM
+                                                                          =####MMMMM##X               M=
+                                                               .;;;;;;;;;X##MM###MMM###M              .X+;
+                                                               M########M===.=M###M#####M.              +#;
+                                                              =M...++++.     ;M#####=.=###M=.            .M+.
+                                                              M=             X######=    =####M++=         +#X
+                                                             .X              +######X     ...=M###.         .=M=
+                                                             =.            +#######M             #.            MM
+                                                            .X            +####M####M;           XM             .
+                                                            M;           X#####MMM####=          .M
+                                                          ;M.           +##M#MMMM######           MX
+                                                         .#+            M###M##MMM#####.          +X
+                                                        +M+            X####MM#MMMM####=           M
+                                                       ++.             ####M#MMMMM#M###M           M=
+                                                       ;              .###MMMMMMMMM#M##M           ;M
+                                                      .=              M##M#MMMMMMMM####M           .M=
+                                                     +X               M##MM#M#XMM#######            .M=
+                                                                     .##MM##MMMMM#M#M##M             ;M
+                                                                     +###MMMMMMMM######M              +X
+                                                                     +###MMMMM#MM###M##M              .M.
+                                                                     M##M##XMMMMMMMM###M               ++
+                                                                     #####MXMMMMM##M###X                XM
+                                                                     ###MMMMMMMMMM#####=
+                                                                     ####MMM#MMM#######.
+                                                                     ###MMMMXMM########
+                                                                     M###MMMMMMMM#####M
+                                                                     +######XMM#MM####;
+                                                                     .##M##M#MXMMM###+
+                                                                      +######MM#M###M
+                                                                       M######MM###M;
+                                                                       .X#########M;
+                                                                         =M######=
+                                 .                                        ;+++++.
+                                 =
+                                .=
+                                 X
+                                 =;
+                                 =X
+                                 =#          ;
+                                  M         ;
+                                  X=        +====.
+                                  X=       X#####M. ;
+                                  X       =#######= =
+                                 .M      X########MM                                                         .
+                                 =+     X##M######M
+                                 =;    ;##MMM#####+
+                                 X;    M##MMMMMM##=
+                                +#;    X###MMMMMM#=
+                                X#;    =###M#MMM#M             .
+                                X#;     X########;            =X
+     .X;;;..                    X#;     .M#######;          ;;M.
+      .====MMX===========       X#;  .=MM##M####=        =++==
+           ...+XXXXXXX+.M       =#; .##MMM# ....       =MM=                                               ;
+                        #;      .#X.M#MMMM#+         .MX.                                                X
+                        MX      .####MMXMMMX         #+.                                               .M+
+                        .#=      =###MMMMM#+       .M.                                                .M
+                         +#.      =##MMMMM#       +#M                                                 =X
+                          +#.     =M##MM##M    .+#M=                                                  M.
+                           +#;MMXM########+   .##M                                                   =X
+                   ..       ;+###MMMM##+###++MX=;                                    ;.             =M.
+                 .X##;        =##MMMMM#  ;XM;                                    .==.=;             M.
+             XXXXM#X#MX=    X;+#MMMMM##;                                         X##MMM            .X
+           XM##MM;  ;###MMMM####MMMMM##+                                        .######;           M.
+        =XMM=;;      .+M##MM####MMMM####=                                     .;=#######=         .X
+ XX   XM##M                  .X#MMMM####X                                      X#########.        =X
+  ;+=+;...              .;;;=#######X;..++=;                                    #########M.       =X
+                       =#########MM#;     XM#M++=.                              #######MMMX       =X
+                     .M##########=X#X       +++++M+                             #####M#MMM#       ;X
+                    +#######M###X.;#=            ;M.                            M#MMMMM####;       X
+                   X#####MMMM###X  M+             M.                            ;#MM#MM####.       X
+                 .+#####MMMXXMM##; .M=            X=                            .#MM#M####M        X
+                 ;#####MMMMMMMM##=  =#X.          =X                            .########M.       ;X
+                ;#####MMMMMMM####=   +###+         #                             X######+         MX      #X
+                M#######XMMM#M###=    =M#X         X.                             +MMM=M#MMM;     MX     XM#M+
+               X####MMMMXMMMMM##M       =M         +M        ;+;;;;;;;XM##+            M#M###+   +#     =#  ;MX.
+              =####MMMMMMMMM#M##;       =#.        ;#.    ;.XXXMMMMMMM=; +M;          =#MMMM#M  .#M    ;#;    XM;
+              M####MXXMXMMMM####.       X#.         MX    .+;             ;#+         +#MMMMM#;;M#.   .M=       XM+;
+             .####MMMMMMMMMM###X        =#.         .#                     X#=        +##MMMM####=   .M=         .+MM+.
+             +#####MMMMMMMM###M.        ;#.          +X                     ;MM+.     +#MMMMM#X+;   XM.             ..;=+;
+             +####MMMMMM######=         ;#.          .#.                     .=#M+.   +##MM##M    .XX;                  ;X++;
+             M###MMMMMMM######.          #;           M+                       .X##XXXM#######M=.X#+                      ;=
+             ####MMMMMMMMM###X           #+            =.                        ;;+M##==######MM##
+             ####M#MMMM#####M            #+            .XX                           ..  M##MMM###;
+             X#####MM#M#####.            #+                                             ;##MMMMM#;
+             =######M#####+.             +M                              .===.        ;=X##MMMMM#M
+              X##########+               +#                              MXM##MX=....;M####MMMMM##+.
+               X#######M=                ;#                             +X  ;===MMMMM=MX=##MMMMM####X;
+                ;XX##XX;                  X                             M;               M##MMMM#M####X;;
+                                          +                            XX               .########;===M###MMX
+                                          +                           ;#=               M########+    .=XXMM#+
+                                          ;                          .M+               =##X +####+;.        ;MX.
+                                           X                        =#=               .M#+  X#######+         ;#M=
+                                           ..                     .+M.              .X#M.  =#########+          X#M;
+                                                                 ;#M              ;X###.   ####MM#####=          .M#MX.
+                                                               .XM+             .###MX.   +#MMM#M######.            ;XM#X++=
+                                                               +.               .X+;      ###MMMM######M               .=+==X=.
+                                                              ==                .+       .####MM#MMM####+                   =X=
+                                                             ;=                 =+       X###MMMMMMMM####;
+                                                                                #=       M##MMMMMMMMM####M
+                                                                                #.       M###MMMMMMM######
+                                                                               =M        M##MMMMMMM#MM####;
+                                                                               XM        M###M#MMMMMMM####X
+                                                                              ;MX        M###MMMMXMMMM####M
+                                                                              XM         M####MM#MMM#M#####=
+                                                                             +#;         ;###M#MMMMM#MMM###+
+                                                                            .MX          .#####MMMMMMM#####+
+                                                                            XM.           M#####MMMM#MM####+
+                                                                           =#;            +#####M###M####M#+
+                                                                           X=             ;#######M########+
+                                                                          .=               M#####M#M##M####=
+                                                                          .=               .####M##MMMM####.
+                                                                          =;                ;####M#MMMMM##M
+                                                                         ;M                  X#####MMM####+
+                                                                         ;.                  =####MM######
+                                                                                              =######M###X
+                                                                                               =M#######=
+                                                                                                 ======.

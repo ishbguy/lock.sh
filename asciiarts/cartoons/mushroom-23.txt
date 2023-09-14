@@ -1,0 +1,12 @@
+ (\ 
+ '(_\  `  
+ '  `o_ `
+ `   |\`)
+     | \)
+   ,-+-.
+  /e=mc2\    ,-- Thomas E. 'Propellerhead' Mushroom
+,' _____ `.      Always thinking up new inventions
+'=( . . )='
+   \(_)/
+    ) (
+    """

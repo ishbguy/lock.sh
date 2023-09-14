@@ -1,0 +1,19 @@
+       o O       o O       o O       o O
+     o | | O   o | | O   o | | O   o | | O
+   O | | | | O | | | | O | | | | O | | | | O
+  O-oO | | o   O | | o   O | | o   O | | oO-o
+ O---o O o       O o       O o       O o O---o
+O-----O                                 O-----o
+o-----O                                 o-----O
+ o---O                                   o---O
+  o-O                                     o-O
+   O                                       O
+  O-o                                     O-O
+ O---o                                   O---o
+O-----o                                 O-----o
+o-----O                                 o-----O
+ o---O o O       o O       o O       o O o---O
+  o-Oo | | O   o | | O   o | | O   o | | Oo-O
+   O | | | | O | | | | O | | | | O | | | | O
+     O | | o   O | | o   O | | o   O | | o
+       O o       O o       O o       O o

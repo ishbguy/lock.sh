@@ -1,0 +1,14 @@
+HHH          HHH     UUU       UUU       GGGGGGGGGGGG
+HHH          HHH     UUU       UUU      GGGGGGGGGGGGGG
+HHH          HHH     UUU       UUU     GG            GG
+HHH          HHH     UUU       UUU     GG            GG
+HHH          HHH     UUU       UUU     GG
+HHHHHHHHHHHHHHHH     UUU       UUU     GG
+HHHHHHHHHHHHHHHH     UUU       UUU     GG
+HHHHHHHHHHHHHHHH     UUU       UUU     GG         GGGGG
+HHHHHHHHHHHHHHHH     UUU       UUU     GG        G   GG
+HHH          HHH     UUU       UUU     GG            GG
+HHH          HHH     UUU       UUU     GGG          GGG
+HHH          HHH     UUU       UUU      GG         GG
+HHH          HHH      UUU     UUU        GGGGGGGGGGG
+HHH          HHH       UUUUUUUUU          GGGGGGGGG

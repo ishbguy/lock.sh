@@ -1,0 +1,9 @@
+                LL         '''      A      RRRRRRR     CCCCCCCC            DDDDDDD    EEEEEEEEE
+                LL         '''     A A     RRRRRRRR   CCCCCCCCC            DDDDDDDD   EEEEEEEEE
+                LL         '''    AA AA    RR     RR  CC                   DD    DDD  EE
+                LL         '''   AA   AA   RR     RR  CC                   DD     DD  EE
+                LL               AAAAAAA   RRRRRRRR   CC                   DD     DD  EEEEEEEE
+                LL              AA     AA  RR  RR     CC                   DD     DD  EE
+                LL              AA     AA  RR   RR    CC                   DD    DDD  EE
+                LLLLLLLLL       AA     AA  RR    RR   CCCCCCCCC            DDDDDDDD   EEEEEEEEE
+                LLLLLLLLL       AA     AA  RR     RR   CCCCCCCC            DDDDDDD    EEEEEEEEE

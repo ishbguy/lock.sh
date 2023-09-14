@@ -1,0 +1,39 @@
+                          .s*"*s+.                         
+                          $;    `*b. .ss.                
+                          `Ts.    `TP' `T..ss.           
+                            `*b         $P  `T_,+.       
+                             d'              :P'`$.      
+                            d'                   :Ts.    
+                           d'                   '  `*Ts. 
+                          d'                          `$;
+                         d'                       .bs+sP 
+                        d'                        $      
+                       d'                        :;      
+                 s**s.d'                         $       
+                d'.s $+_    .+s*s.              :;       
+               d'dP d' `*+,d*'   `b             $        
+              d'dP d'     d'     .P.s*s.       :;        
+              T.  d'      $     .Pd'   `b      $         
+               `*d'       T.   .Pd'     $     :;         
+                d'         `*sP' $     .P     $          
+               d'         .+     T.   .P"*+. :;_         
+              d'         d'      `*sP'     `^$P*s.       
+             d'         :$        .         :; s`T       
+            d'          :$        $         $ :P.P       
+           d'            `Ts._  _.P        :;:P.P        
+_        .d;               `"*TsP'         $;'.P         
+^Ts._   d'`Tb.                            :;TsP          
+ :P"*Tsd;   `*Tb.                         $              
+.P     Ts.     `*Tb.                     :;              
+P       `Ts.      `*Tb.                  $               
+          `Ts.       `$Tb._             :;               
+b           `Ts.    .d$$$$$$$g+._       $                
+$b            `Ts..dP'T$$$$$  `"*^Tbs+sd;                
+$P*.            `TP'b  `T$$$ [bug]     :b                
+P   $.             d$.  JTd$         _.sP+.              
+     $$._         d$$$sP*' $bss++ssdP*'  `*Ts._          
+     $$$$Ts._  _.d$$$$$b                     `*Tbs.      
+     $$$$$$$$T^*' `T$$$P                         `*b     
+     :$$$$$$$       T$P                            $     
+     :$$$$$$$       :P                             $     
+      $$$$$$$b     .P                              $ 

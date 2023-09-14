@@ -1,0 +1,33 @@
+                                    __--XX-
+                                 ^XXXXX^^
+                             _-XXXX-^
+              XXX         --XXX^^
+          XXXX   -XX_--VXXX^^
+        XX      _-^ .=XX^
+      XX     _-^::XX^^^ XXX-_____     ___
+     X    _-^_-^                 ^^^^^   ^^XXXX
+    X  _-^_-^                                  X
+   X_-^_-^              .                       X
+ --^_-^                .X                       X----
+-.-                    ^^                       XXXX -
+ X                                              XXXX-
+ X                                              X
+ X                                              X
+X      XXX  XX                                 X
+X     XXXXX  X                                X
+X    XXXXXXX  X                              X
+X   XXXXXXXXX X                            XX
+X  XXXXXXXXXXX X                       XXXX
+ X XXXXXXXXXXX X                   XXXX
+ X XXXXXXXXXXX XXX           XXXXXX
+ X XXXXXXXXXXX X XX        XX
+ X XXXXXXXXXXX X   X      X                   ___
+ X  XXXXXXXXX X     X-XXXXX              __---   ------_
+  X  XXXXXXX X     ^---^  X           __- _---^^^----__ --_
+  X   XXXXX X       X      X        _- -'^.....   .....^'-_-_
+   XX-     XX      X .     XX    _-  _-....   .....   .....= =
+      XXXXX       X   X    X   _-  _-...   .....   .....   .= =
+                XX    X      XX  _-.   .....   .....   .....= =
+               X      X      X/XX....   .....   .....   ....= =
+              XXX      XXXXXX^  X   .....   .....   .....  _-_-
+             X   XX              /

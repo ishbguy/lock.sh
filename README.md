@@ -1,6 +1,6 @@
 # [lock.sh](https://github.com/ishbguy/lock.sh)
 
-A terminal lock screen tool written in shell, which integrates with tmux as a plugin.
+A shell lock screen tool, which can be integrated with tmux.
 
 ![`lock.sh -e '$(date +%H:%M:%S | figlet)'`](screenshots/lock-date.png)
 
@@ -47,7 +47,7 @@ See `lock.sh -h`:
 
 ```
 lock.sh v0.7.0
-lock.sh [-lehvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
+lock.sh [-leAhvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
     
     [args..]        Show the args string on lock screen
     -c <cmd>        Run the [cmd] as the lock screen command
@@ -58,6 +58,7 @@ lock.sh [-lehvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
     -t <sec>        Specify <sec> seconds timer to invoke the login
     -s <sec>        Slideshow mode, slide every <sec> seconds
     -S <sec>        Shuffle slideshow mode, slide every <sec> seconds
+    -AS <sec>       Shuffle slideshow with local ascii arts every <sec> seconds
     -h              Print this help message
     -v              Print version number
     -D              Turn on debug mode
@@ -76,6 +77,7 @@ For examples:
     lock.sh -S 5                    # Shuffle every 5 seconds without args, it will try fortune
                                     # by default, or will invoke login screen
     lock.sh -S 5 one two three      # Shuffle every 5 seconds with args
+    lock.sh -AS 5                   # Shuffle every 5 seconds with local ascii arts
     lock.sh -e '$(date +%H:%M)'     # Dynamic expansion the date output
 
 This program is released under the terms of the MIT License.

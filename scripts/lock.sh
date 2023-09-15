@@ -173,9 +173,10 @@ lock_screen() {
             lock_draw "${msgbox[n]}"
         fi
         if read -sr -N 1 -t 0.1; then
-            [[ -n ${opts[l]} ]] || break
-            if [[ $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
+            if [[ -n ${opts[l]} && $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
                 lock_login "Enter your password:" && break
+            else
+                break
             fi
         fi
     done
@@ -244,7 +245,7 @@ EOF
     [[ ${opts[h]} ]] && usage && return 0
     [[ ${opts[v]} ]] && version && return 0
 
-    require_tool dialog tput shuf find head
+    require_tool dialog tput find shuf
 
     # ignore termination and terminal job controlling signals
     trap 'true' TERM INT QUIT HUP
@@ -278,7 +279,7 @@ EOF
         if has_tool fortune; then
             if [[ ${opts[S]} ]]; then
                 if [[ ${opts[A]} ]]; then
-                    local -a ascii_art=($(find $LOCK_ART_DIR -type f | shuf | head -n 25)) ascii_art_text=()
+                    local -a ascii_art=($(find $LOCK_ART_DIR -type f | shuf -n 25 -)) ascii_art_text=()
                     for f in "${ascii_art[@]}"; do
                         ascii_art_text+=("$(cat "$f")")
                     done

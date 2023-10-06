@@ -174,7 +174,7 @@ lock_screen() {
         fi
         if read -sr -N 1 -t 0.1; then
             if [[ -n ${opts[l]} && $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
-                lock_login "Enter your password:" && break
+                lock_login "Enter your password:" && break || tput civis
             else
                 break
             fi
@@ -265,39 +265,38 @@ EOF
         [[ -d $LOCK_ART_DIR && -e $LOCK_ART_DIR/${args[a]} ]] || \
             die "$PROGNAME: $LOCK_ART_DIR/${args[a]}: No such file or directory"
         lock_term "$(cat "$LOCK_ART_DIR/${args[a]}")"
-    elif [[ $* ]]; then
-        if [[ ${opts[S]} ]]; then
+    elif [[ ${opts[S]} ]]; then
+        if [[ $* ]]; then
             local -a args_array=("$@") shuf_array=()
             for i in $(shuf -e $(eval "echo {0..$((${#args_array[@]} - 1))}")); do
                 shuf_array+=("${args_array[$i]}")
             done
             lock_term "${shuf_array[@]}"
-        elif [[ ${opts[s]} ]]; then
-            lock_term "$@"
+        elif [[ ${opts[A]} ]]; then
+            local -a ascii_arts=()
+            for f in $(find $LOCK_ART_DIR -type f | shuf -n 25 -); do
+                ascii_arts+=("$(cat "$f")")
+            done
+            lock_term "${ascii_arts[@]}"
+        elif has_tool fortune; then
+            opts[e]=S; lock_term '$(fortune)'
         else
-            lock_term "$*"
-        fi
-    else
-        if has_tool fortune; then
-            if [[ ${opts[S]} ]]; then
-                if [[ ${opts[A]} ]]; then
-                    local -a ascii_arts=()
-                    for f in $(find $LOCK_ART_DIR -type f | shuf -n 25 -); do
-                        ascii_arts+=("$(cat "$f")")
-                    done
-                    lock_term "${ascii_arts[@]}"
-                else
-                    opts[e]=S; lock_term '$(fortune)'
-                fi
-            else
-                lock_term "$(fortune)"
-            fi
-        else
-            # lock without cmd will invoke lock_login as default
+            # lock with -S but witout args, invoke lock_login instead
             while true; do
                 lock_login "Enter your password:" && break
             done
         fi
+    elif [[ ${opts[s]} && $* ]]; then
+        lock_term "$@"
+    elif [[ $* ]]; then
+        lock_term "$*"
+    elif has_tool fortune; then
+        lock_term "$(fortune)"
+    else
+        # lock without anything will invoke lock_login as default
+        while true; do
+            lock_login "Enter your password:" && break
+        done
     fi
 }
 

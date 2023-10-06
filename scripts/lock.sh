@@ -281,11 +281,11 @@ EOF
         if has_tool fortune; then
             if [[ ${opts[S]} ]]; then
                 if [[ ${opts[A]} ]]; then
-                    local -a ascii_art=($(find $LOCK_ART_DIR -type f | shuf -n 25 -)) ascii_art_text=()
-                    for f in "${ascii_art[@]}"; do
-                        ascii_art_text+=("$(cat "$f")")
+                    local -a ascii_arts=()
+                    for f in $(find $LOCK_ART_DIR -type f | shuf -n 25 -); do
+                        ascii_arts+=("$(cat "$f")")
                     done
-                    lock_term "${ascii_art_text[@]}"
+                    lock_term "${ascii_arts[@]}"
                 else
                     opts[e]=S; lock_term '$(fortune)'
                 fi

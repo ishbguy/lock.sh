@@ -36,7 +36,7 @@ If using [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm), you need to
 the following to your list of TPM plugins in `.tmux.conf`:
 
 ```
-set -g @plugin 'ishbguy/tmux-lock'
+set -g @plugin 'ishbguy/lock.sh'
 ```
 
 Then hit <kbd>prefix</kbd>+<kbd>I</kbd> to fetch and source the plugin. You should now be able to use this plugin!

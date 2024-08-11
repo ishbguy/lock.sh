@@ -120,7 +120,7 @@ str_sizeof() {
         done <<<"$string"
         echo "$max_lines" "$max_cols"
 }
-cal_draw_pos() {
+calc_draw_pos() {
     local lines="$(tput lines)" cols="$(tput cols)"
     if [[ $lines -lt $1 && $cols -lt $2 ]]; then
         echo 0 0
@@ -138,14 +138,14 @@ lock_draw_pos() {
 }
 lock_draw() {
     local msg="$*"
-    local -a cur_pos=($(cal_draw_pos $(str_sizeof "$msg")))
+    local -a cur_pos=($(calc_draw_pos $(str_sizeof "$msg")))
     local IFS= ; while read -r line; do
         lock_draw_pos "$((cur_pos[0]++))" "${cur_pos[1]}" "$line"
     done <<<"$msg"
 }
 lock_draw_clear() {
     local msg="$*"
-    local -a cur_pos=($(cal_draw_pos $(str_sizeof "$msg")))
+    local -a cur_pos=($(calc_draw_pos $(str_sizeof "$msg")))
     local IFS= ; while read -r line; do
         lock_draw_pos "$((cur_pos[0]++))" "${cur_pos[1]}" "${line//?/ }"
     done <<<"$msg"

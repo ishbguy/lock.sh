@@ -151,41 +151,61 @@ lock_draw_clear() {
     done <<<"$msg"
 }
 lock_screen() {
-    local n=0 ctx last_ctx
-    local -a msgbox=("$@")
-    local slide_time="$(date)"
-    while true; do
-        if [[ $(date_cmp "$(date)" "$slide_time") -ge ${LOCK_SLIDE_TIME} ]]; then
-            slide_time="$(date)"
-            [[ $((++n)) -lt ${#@} ]] || n=0
-            [[ ${opts[e]} == "S" ]] && ctx="$(eval echo \""${msgbox[n]}"\")"
-            tput clear
-        fi
-        if [[ ${opts[e]} ]]; then
-            if [[ ${opts[e]} == "S" ]]; then
-                [[ $last_ctx ]] || ctx="$(eval echo \""${msgbox[n]}"\")"
-            else
-                ctx="$(eval echo \""${msgbox[n]}"\")"
-            fi
-            [[ $ctx != "$last_ctx" ]] && last_ctx="$ctx" && tput clear
-            lock_draw "$ctx"
+    if [[ ${#@} -ne 0 ]]; then
+        declare -ga LOCK_CTX=("$@")
+        declare -g  LOCK_CTX_NUM=0
+        declare -g  LOCK_WINCH=0
+        declare -g  LOCK_CTX_LAST
+    fi
+
+    local ctx="${LOCK_CTX[$LOCK_CTX_NUM]}"
+    
+    if [[ $LOCK_WINCH -eq 1 ]]; then
+        LOCK_WINCH=0
+        ctx="$LOCK_CTX_LAST"
+    else
+        [[ $((++LOCK_CTX_NUM)) -lt ${#LOCK_CTX[@]} ]] || LOCK_CTX_NUM=0
+        tput clear
+    fi
+
+    [[ ${opts[e]} ]] && ctx="$(eval echo \""$ctx"\")"
+
+    lock_draw "$ctx"
+    LOCK_CTX_LAST="$ctx"
+}
+lock_loop() {
+    while read -sr -N 1 ; do
+        if [[ -n ${opts[l]} && $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
+            lock_login "Enter your password:" && break || { kill -"$LOCK_ASYNC_SIG" $$; continue; }
         else
-            lock_draw "${msgbox[n]}"
+            break
         fi
-        if read -sr -N 1 -t 0.1; then
-            if [[ -n ${opts[l]} && $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
-                lock_login "Enter your password:" && break || tput civis
-            else
-                break
-            fi
-        fi
+    done
+}
+lock_timer() {
+    local time=$1 ppid=$2
+    while true; do
+        sleep "$time" && kill -"$LOCK_ASYNC_SIG" "$ppid"
     done
 }
 lock_term() {
     # init and setting the terminal environment
     tput init; tput smcup; tput clear; tput civis
-    trap 'tput clear' WINCH
+    trap 'lock_screen' "$LOCK_ASYNC_SIG"
+    trap 'LOCK_WINCH=1; lock_screen' WINCH
     lock_screen "$@"
+
+    # run timer in background, then trigger lock_screen update when timeout
+    if [[ ${opts[e]} && ${opts[e]} != 'S' ]]; then
+        lock_timer "$LOCK_MIN_REFRESH_TIME" $$  &
+    else
+        lock_timer "$LOCK_SLIDE_TIME" $$  &
+    fi
+    trap "kill -TERM $! &>/dev/null" RETURN
+
+    lock_loop
+    
+    # recover term status
     tput rmcup; tput cnorm
 }
 lock_run() {
@@ -201,7 +221,7 @@ lock_run() {
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v0.7.0"
+    local VERSION="v1.0.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-leAhvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
@@ -258,6 +278,8 @@ EOF
     local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
     local LOCK_SLIDE_TIME="${args[S]:-${args[s]:-${LOCK_SLIDE_TIME:-60}}}"
     local LOCK_START_TIME="$(date)"
+    local LOCK_ASYNC_SIG="${LOCK_ASYNC_SIG:-USR1}"
+    local LOCK_MIN_REFRESH_TIME="${LOCK_MIN_REFRESH_TIME:-1}"
 
     if [[ ${opts[c]} ]]; then
         lock_run "${args[c]}"

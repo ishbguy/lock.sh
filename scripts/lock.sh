@@ -154,23 +154,15 @@ lock_screen() {
     if [[ ${#@} -ne 0 ]]; then
         declare -ga LOCK_CTX=("$@")
         declare -g  LOCK_CTX_NUM=0
-        declare -g  LOCK_WINCH=0
         declare -g  LOCK_CTX_LAST
     fi
 
     local ctx="${LOCK_CTX[$LOCK_CTX_NUM]}"
     
-    if [[ $LOCK_WINCH -eq 1 ]]; then
-        LOCK_WINCH=0
-        ctx="$LOCK_CTX_LAST"
-    else
-        [[ $((++LOCK_CTX_NUM)) -lt ${#LOCK_CTX[@]} ]] || LOCK_CTX_NUM=0
-        tput clear
-    fi
-
+    [[ $((++LOCK_CTX_NUM)) -lt ${#LOCK_CTX[@]} ]] || LOCK_CTX_NUM=0
     [[ ${opts[e]} ]] && ctx="$(eval echo \""$ctx"\")"
 
-    lock_draw "$ctx"
+    tput clear && lock_draw "$ctx"
     LOCK_CTX_LAST="$ctx"
 }
 lock_loop() {
@@ -192,7 +184,7 @@ lock_term() {
     # init and setting the terminal environment
     tput init; tput smcup; tput clear; tput civis
     trap 'lock_screen' "$LOCK_ASYNC_SIG"
-    trap 'LOCK_WINCH=1; lock_screen' WINCH
+    # trap 'tput clear; lock_draw "$LOCK_CTX_LAST"' WINCH
     lock_screen "$@"
 
     # run timer in background, then trigger lock_screen update when timeout

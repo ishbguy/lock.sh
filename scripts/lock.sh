@@ -151,63 +151,80 @@ lock_draw_clear() {
     done <<<"$msg"
 }
 lock_screen() {
-    if [[ ${#@} -ne 0 ]]; then
-        declare -ga LOCK_CTX=("$@")
-        declare -g  LOCK_CTX_NUM=0
-        declare -g  LOCK_CTX_LAST
-    fi
+    declare -ga LOCK_CTX=("$@")
+    declare -g  LOCK_CTX_NUM=0
 
+    # first init screen context
     local ctx="${LOCK_CTX[$LOCK_CTX_NUM]}"
-    
-    [[ $((++LOCK_CTX_NUM)) -lt ${#LOCK_CTX[@]} ]] || LOCK_CTX_NUM=0
     [[ ${opts[e]} ]] && ctx="$(eval echo \""$ctx"\")"
-
     tput clear && lock_draw "$ctx"
-    LOCK_CTX_LAST="$ctx"
+
+    # wait for a cmd
+    while read -ru "$LOCK_MQ" cmd; do
+        case ${cmd@U} in
+            PREV) [[ $((--LOCK_CTX_NUM)) -ge 0 ]] || LOCK_CTX_NUM="$((${#LOCK_CTX[@]} - 1))" ;;
+            NEXT|TIMEOUT) [[ $((++LOCK_CTX_NUM)) -lt ${#LOCK_CTX[@]} ]] || LOCK_CTX_NUM=0 ;;
+            WINCH|LOGIN_FAIL) true ;; # do nothing
+            *) true ;; # do nothing
+        esac
+        ctx="${LOCK_CTX[$LOCK_CTX_NUM]}"
+        [[ ${opts[e]} ]] && ctx="$(eval echo \""$ctx"\")"
+        tput clear && lock_draw "$ctx"
+    done
 }
 lock_loop() {
-    while read -sr -N 1 ; do
+    while read -sr -N 1 key; do
+        if [[ $key =~ [jJ] ]]; then
+            echo "NEXT" >& "$LOCK_MQ" && continue
+        elif [[ $key =~ [kK] ]]; then
+            echo "PREV" >& "$LOCK_MQ" && continue
+        fi
         if [[ -n ${opts[l]} && $(date_cmp "$(date)" "$LOCK_START_TIME") -ge ${LOCK_LOGIN_TIME} ]]; then
-            lock_login "Enter your password:" && break || { kill -"$LOCK_ASYNC_SIG" $$; continue; }
+            lock_login "Enter your password:" && break || { echo "LOGIN_FAIL" >& "$LOCK_MQ"; continue; }
         else
             break
         fi
     done
 }
 lock_timer() {
-    local time=$1 ppid=$2
-    while sleep "$time"; do
-        kill -"$LOCK_ASYNC_SIG" "$ppid"
+    while sleep "$1"; do
+        echo "TIMEOUT" >& "$LOCK_MQ"
     done
 }
 lock_winch_monitor() {
-    local ppid="$1" lines="$(tput lines)" cols="$(tput cols)" cur_lines cur_cols
+    local lines="$(tput lines)" cols="$(tput cols)" cur_lines cur_cols
     while sleep 1; do
         cur_lines="$(tput lines)"  cur_cols="$(tput cols)"
         if [[ $lines != "$cur_lines" || $cols != "$cur_cols" ]]; then
             lines="$cur_lines" cols="$cur_cols"
-            # tput clear; lock_draw "$LOCK_CTX_LAST"
-            kill -"$LOCK_ASYNC_SIG" "$ppid"
+            echo "WINCH" >& "$LOCK_MQ"
         fi
     done
 }
 lock_term() {
+    # make a fifo file descriptor for multi processes IPC
+    local lock_fifo="$(mktemp -u)"
+    declare -g LOCK_MQ="$(tmpfd)"
+    mkfifo "$lock_fifo" || return 1
+    eval "exec $LOCK_MQ<>$lock_fifo" && rm -rf "$lock_fifo" || return 1
+
     local -a pids=()
+
     # init and setting the terminal environment
     tput init; tput smcup; tput clear; tput civis
-    trap 'lock_screen' "$LOCK_ASYNC_SIG"
-    lock_screen "$@"
 
-    # run timer in background, then trigger lock_screen update when timeout
+    lock_screen "$@" &
+    pids+=($!)
+
+    # run timer in background, then send message to lock_screen when timeout
     if [[ ${opts[e]} && ${opts[e]} != 'S' ]]; then
-        lock_timer "$LOCK_MIN_REFRESH_TIME" $$  &
+        lock_timer "$LOCK_MIN_REFRESH_TIME" &
     else
-        lock_timer "$LOCK_SLIDE_TIME" $$  &
+        lock_timer "$LOCK_SLIDE_TIME" &
     fi
     pids+=($!)
 
-    # trap 'tput clear; lock_draw "$LOCK_CTX_LAST"' WINCH
-    lock_winch_monitor $$ &
+    lock_winch_monitor &
     pids+=($!)
 
     trap "kill -TERM ${pids[*]} &>/dev/null" RETURN
@@ -230,7 +247,7 @@ lock_run() {
 
 lock() {
     local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
-    local VERSION="v1.0.0"
+    local VERSION="v1.1.0"
     local HELP=$(cat <<EOF
 $PROGNAME $VERSION
 $PROGNAME [-leAhvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
@@ -266,6 +283,11 @@ For examples:
     lock.sh -AS 5                   # Shuffle every 5 seconds with local ascii arts
     lock.sh -e '\$(date +%H:%M)'     # Dynamic expansion the date output
 
+Lock screen key bindings:
+
+    j/J     Next lock screen
+    k/K     Prev lock screen
+
 This program is released under the terms of the MIT License.
 EOF
 )
@@ -287,7 +309,6 @@ EOF
     local LOCK_LOGIN_TIME="${args[t]:-${LOCK_LOGIN_TIME:-60}}"
     local LOCK_SLIDE_TIME="${args[S]:-${args[s]:-${LOCK_SLIDE_TIME:-60}}}"
     local LOCK_START_TIME="$(date)"
-    local LOCK_ASYNC_SIG="${LOCK_ASYNC_SIG:-USR1}"
     local LOCK_MIN_REFRESH_TIME="${LOCK_MIN_REFRESH_TIME:-1}"
 
     if [[ ${opts[c]} ]]; then

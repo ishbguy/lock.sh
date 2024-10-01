@@ -46,7 +46,7 @@ Then hit <kbd>prefix</kbd>+<kbd>I</kbd> to fetch and source the plugin. You shou
 See `lock.sh -h`:
 
 ```
-lock.sh v0.7.0
+lock.sh v1.1.0
 lock.sh [-leAhvD] [-c cmd|-a name|-d dir|-t sec|-s sec|-S sec] [args...]
     
     [args..]        Show the args string on lock screen
@@ -79,6 +79,11 @@ For examples:
     lock.sh -S 5 one two three      # Shuffle every 5 seconds with args
     lock.sh -AS 5                   # Shuffle every 5 seconds with local ascii arts
     lock.sh -e '$(date +%H:%M)'     # Dynamic expansion the date output
+
+Lock screen key bindings:
+
+    j/J     Next lock screen
+    k/K     Prev lock screen
 
 This program is released under the terms of the MIT License.
 ```

@@ -176,15 +176,26 @@ lock_loop() {
 }
 lock_timer() {
     local time=$1 ppid=$2
-    while true; do
-        sleep "$time" && kill -"$LOCK_ASYNC_SIG" "$ppid"
+    while sleep "$time"; do
+        kill -"$LOCK_ASYNC_SIG" "$ppid"
+    done
+}
+lock_winch_monitor() {
+    local ppid="$1" lines="$(tput lines)" cols="$(tput cols)" cur_lines cur_cols
+    while sleep 1; do
+        cur_lines="$(tput lines)"  cur_cols="$(tput cols)"
+        if [[ $lines != "$cur_lines" || $cols != "$cur_cols" ]]; then
+            lines="$cur_lines" cols="$cur_cols"
+            # tput clear; lock_draw "$LOCK_CTX_LAST"
+            kill -"$LOCK_ASYNC_SIG" "$ppid"
+        fi
     done
 }
 lock_term() {
+    local -a pids=()
     # init and setting the terminal environment
     tput init; tput smcup; tput clear; tput civis
     trap 'lock_screen' "$LOCK_ASYNC_SIG"
-    # trap 'tput clear; lock_draw "$LOCK_CTX_LAST"' WINCH
     lock_screen "$@"
 
     # run timer in background, then trigger lock_screen update when timeout
@@ -193,7 +204,13 @@ lock_term() {
     else
         lock_timer "$LOCK_SLIDE_TIME" $$  &
     fi
-    trap "kill -TERM $! &>/dev/null" RETURN
+    pids+=($!)
+
+    # trap 'tput clear; lock_draw "$LOCK_CTX_LAST"' WINCH
+    lock_winch_monitor $$ &
+    pids+=($!)
+
+    trap "kill -TERM ${pids[*]} &>/dev/null" RETURN
 
     lock_loop
     

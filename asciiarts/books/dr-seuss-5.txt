@@ -1,103 +1,67 @@
-                ___..-----~~~~~~~~~~~--._
-           _.--'                         \/_
-         .'                               ;
-        /       --..                      ;
-      .'    _.---''                       ;
-    .'    .'.--.'''                      .'
-    |   .'-' .'.'                        ;
-  .'   ''  .'-'  ``--..__              .'
-  |      .'  .---'''''''''---....    .'
-..'        .'                    \ .'
-.|       .'                       Y
-.'     .'  .'            __..-----|
-|     ;  .' _.-'     _.-'         ;
-|   .' .' ''     .-''             ;
-|  ;    .'    _.'                 ;
-\ .'        .'__..                 `.
-.Y        .'''                      ;
-.|       /            .'           .'
-.`.     / /         .'_____.....---;
-   \   / /         .-'            /;
-    \ / /        .'                ;
-     Y /  /    .'                  ;
-     |   /   .'                 ___j
-     |      .'            __..''    `.
-     |    .'           _.'           :
-     `.   ;         _.'               `.
-       \ /   /    .'                    \
-        Y       .' .' .'         __...''''-------...._
-        `.    .' .' .'        .-'          ____       `.
-          :  / .' .' .'   _.-' .'.'..---'''   \MMMmm..'
-           `Y   .' .'   .'    / /  .-          \MMMm.'
-             :        .'   _ / /  /          \  \M.'
-             `.     .'   ,'  : | /            \  \
-      _\____  :   .'   ,'$      :                 \
-        \   `-; .'   ,'$ $$     :    __      __    ;
-         )  $  `.  .' $ $$$        .'__`.  .'__`.  :
-         :   $$  V'      $         : ## ;  : ## ;  :
-         `.   $$    $ $ $          :    ;  :   .' .'
-        .':         $$ $ $          `._.'   `-'   L_                   __
-       ;  /\        $$$                  .###.      `--._       _. --''
-     .' .mMMM`-._$$$$ $ $                '###'           `-.--''
-     ;  :MMM.'  / $ $$                      \         .  .';
-     `._.-'    /  $$$$ $                                   ;
-             _/_..--'''                                  ---....__
-         _.-' |$  $$ $  $   |                             ,'      ``--..__
-       -'     \/|$$__ $$  __/   .                        ,
-               .-''   $  /  \        .           .     ,'
-             .' |  $$$$  |   \                      _.'
-           .'   | $ $$ $      `._                _.'
-         .'      \/| $$$  $      `''--...__..--''  )
-       .'          | $$$$  $                   _.-'
-     .'             \/| $$$                   ;
-   .'                 \/\$$$$               .'
-                         \ $$$            .'
-                          \$$$$         .'
-                           \$ $$      .'
-                           | $$$$    /|
-                           |  $$$   / |                 _._
-                           | $$$$$$   |              _.'   `.
-                           \/$$$  $ $ |           _.'       ;
-         :`--.._            |$$$$$  $$|         .'         .'
-         :      `-.         | $$$$$ $$|       .'          .'
-         `.        `-.      |$$$_...._|     .'          .'
-           :          `-...___.'      ;..--'_.-        ;
-           ;                  `.      ;_.-''         ,.'
-           ;                    `    .'             ; ;
-          .'       ...---"""__.."""`'---..          ; ;
-          ;        _..---'''$ $$$;: `.$$t.`._         ;
-           `-..--''  /$$$$$$$$$$$;`. ;$ $t   `-._ _.-'
-                    /$$$$$$ $$  $;'  ;  $t       "
-                   / $$ $$$ $ $$ ;   '.$$t.
-                  / $$ $$$$$ $  .'    ;  $t.
-                 /$$ $$$$$$$$  .'     ;  $$t
-                /$ $$ $$$$$$$$.'      '.  $t
-               /$$$$$$$$$$$  $:        ;  $t.
-                /$$$$$ $$$$   :   _.__.'  $$t
-               /$$$$$$$ $  $  `-.'          t.
-              /$$$$$$$$$ $    $$            $t
-               /$$$ $$$$$$   $              t.
-              /$$$ $$|$$$                   $|
-               /$$$$$/ $$    $               |
-              /$ $$$/$ $$    $      .'"-.    .-"'.
-             /$$$$$$|$ $$     $     ;    `..'    ;
-             /$ $$$$/$ $$           ;     :     .'
-            /$ $$$ $|$  $           ;     :     ;
-            / $$$$$/$  $            ;     :    ::
-           /$$$$$$/ $$ $$ $       .'      :     :
-            /$$$$$|$$$$        _.'       .'.    `.
-           /$$$$$$/$  $      .'       `-'...`____ `._
-          /$$$ $$/$$$$  $  .'                    ```.`.
-         /$$$$$$$|$$ $ $$.'                         ;  `.
-        /  $  $ / $$ $ $.'                    ___.-'     `.
-       /   $$ $$|$$$ $.'':            _..--'''--           .
-      /$$ $$$$$$| $$.'`  :           :                     ;
-      / $$$$$$$$| /$:                `.                    ;
-     /  $$$$ $$$|/$$:                  `-...____          .`.
-    /$   $$$$$$$/$$$:                           "".      '  ;
-   .$$$ $$$$$$ $$$$$:     `.                     _;      _.-'
-   |  $$$$$$$$$   $$`._     `.            _..--''      .' $$;
-   .$$  $$$$$ $$ $$$$$$`-._.'`-._        `..'       /.'$$$$ ;
-    `.$ $  $$$$$ $$$$$$$/        `._\     (    _.' /    $$$$;
-  dp  `-._ $$$$$$$$$ $$/  $  $       \     `--'   /    $$$$'
-               It was at this point I lost interest.
+                      .;IIIIIIIIIIIIII;.
+            .,;iIIIIIIIIIIIIIIIIIIIIIIII.
+         ,iIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+       ;IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+      ;IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+     IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII'
+   .IIIIIIIIIIIIIII>'````````'<iiiiiii' .i="" .iii'`.nmp"'mmmp4mmp4mmpppp"""""="" .iiiiii'`.xnmmmmmmmmmmmmmmmmmc.="" iiiiiiiiii'``.,nmnnjmmmxcnn.`'??''="">',JP" ,`"LnnrP"' '`.;IIIIIIIII 
+   ' nPL="-LnMMP" ..IIIIIIIIIIIIII  
+    JhJ  uMMP" .IIIIIIIIIIIIIIIIII   
+    MM,nMMP  .IIIIIIIIIIIIIIIIIIIII   
+    MMMMM .IIIIIIIIIIIIIIIIIIIIIIII.  
+    MMMP ;IIIIIIIIIIIIII??"'``'"?II  
+    MP .IIIIIIIIIIII"'',xmnmnmnmn.' 
+    ' ,IIIIIIIIII"',nMMMMMMMMMMMMP.
+     IIIIIIIIII' xJMMMMMMMMMMMMMMMM
+    `IIIIIIII'.xPP4MMMMMMMMMMMMMMMM
+     `IIIII' =";nmMMMMMMMMPP"" .,,,.
+      IIII' ;nMMMMMMMPP"'.;IIIIIIIIII
+      `III uMMMMMMMP" .IIIIIIIIIIIIII.
+       II JMMPLJP'.;IIIIIIIIIIIIIIIIIII.
+        ' MM JP'.IIIIIIIIIIIIIIIIIII>"'''   .,,..
+         4MMM" .IIIIIIIIIIIIIII>"`_,,nmMMMMMMP4444Mbn.
+          "M' IIIIIIIIIIII>"'',==PPP _.  ==n,,,.. ."
+           ' ;IIIIIIIII>'`.xn",r cc=???$$$P==.'===""
+             IIIIIIII'`,xJP" z$ J" .zc$$$$PPPPF.
+             `IIIII" ,J??" r.$'J" c$$$$$$$$ccc,`$.
+               `' ,nMP    c$$$ J J$$$$$$$$$P'??.$h
+         .,,.,cccc'"  ,=="?$$$c$ $$""_`"?$$ ,cc ?$.
+         "?c,.  "?$.4JF- z$$$$$$cP',$$$r`$$ ??$F<$F
+           $$,-.= ?$P" . -<$$$$$$h ?  ?$ $$   J J$F
+          ,<$$$Lz- "z".=JcJ$$$$$$$L .,JP $$."=".$$"                     _,
+        ,JF "?$$L,JcL-",J$$$$$$$$$$h "" z$===<$$$$C..          _.,,==`""
+       nM".=..`"???$ z$""$$$$$$$$$$F"",$$    .$$$$$$$$$c,. _,="
+      JM x ,=    .$.zF z$$$$$$$$$$$$$$$$$cccc$$$$$$$$$$$".r
+      4M P"     z$$"",J$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+              . "',.,cccJ$$F?$$$$$$$$$$$$$$$$$$$$$$$$$$$$"-======-..._
+         _,-="???$"?P",P"$$F $$$$$$$$$$$$$$$$$$$$$$$$$$$$$'           `"~=
+      ,="       JFJ"-=" J$$F;$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+   ,="          P'.zcJ $$".,,"$$$$$$$$$$$$$$$$$$$$$$$$$P'
+,-"          ,-="PP$F';$$ $$$.`?$$$$$$$$$$$$$$$$$$$$$""
+          ,-"    " $F r;$?$$$$h.`"?$$$$$$$$$$$$PPP""
+        ,='        `$$F;$ $"$$$$$$cc,.,,..,.,,zccF
+      ,="           ` `?F-$ $$$$$$$$$$$$$$$$$$$"
+    ,'                  FcP $P"$$$$$$$$$$$$$$P'
+  ,"                     ".,$ J$$$$$$$$$$$$P"
+                          `?C P.$$$$$$$$P"'
+                            "?F<$$$$$$L.
+                             J`$"$$$$$F
+                             $;? $$$P z
+                             $P-;$?$$$$                 .II. 
+                             <$LJ?;$$$$              .IIIIII>
+         .III;.              <$$'j$$$$?            .IIIIIIII
+         `IIIIIII;.          J"',"J$?$?         .IIIIIIIIII
+          `IIIIIIIIII;.      JF  .II.`'      .IIIIIIIIIII'
+           `IIIIIIIIIIIIII;...;IIIIII;  ;IIIIIIIIIIIIII'
+            IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+            IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+           IIIIIIIIIIIIIII'''``````IIII'````IIIIIIIIIIII
+           `IIIIIIII''  ,-',cP",cc III cc    ``IIIIIIII'
+             `''`      zC,P",c??"  III $$        ```'   
+                     ,$P"",'.,ccJh III $F-
+                    c"',',cJ$$P"   III.`cJ,
+                   J$,',JP""',cJ'.IIIII.`.h-
+                  J?$.-",cJ$??? .IIIIIII `$h
+</iiiiiii'></pre>
+

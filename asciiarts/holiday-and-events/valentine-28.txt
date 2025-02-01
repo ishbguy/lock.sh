@@ -1,7 +1,7 @@
       _____           _____
   ,ad8PPPP88b,     ,d88PPPP8ba,
  d8P"      "Y8b, ,d8P"      "Y8b
-dP'           "8a8"           `Yd
+dP'           "8a8"           `Yb
 8(              "              )8
 I8                             8I
  Yb,                         ,dP
@@ -11,6 +11,7 @@ I8                             8I
         `Y8a         a8P'
           `88,     ,88'
             "8b   d8"  Normand
-             "8b d8"   Veilleux
-              `888'
+             "8b.d8"   Veilleux
+              `Y8P'
                 "
+

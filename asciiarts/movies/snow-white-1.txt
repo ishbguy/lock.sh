@@ -1,0 +1,38 @@
+           ,%%%,     ,%%%%,,:::;;;;;;;:,,,. 
+          ,%%;%%,%%%,%;%%%,%,::::;;;;;;;;;;;::,. 
+          %%%%%%,%%,%%%%%'%%%%%,:::;;;;;;;;;%;;::, 
+        .::;;;;::,;;;;;;;;;,%%%%%,:::;;;;;;;;;%%;::, 
+       ::;;;::,vvnvv,;;;;;;;;;,%%%%,:::;;;;;;;;;%%;:: 
+       :;;:'vvnnnnnnnvvvv,;;;;;;;,%%%,:::;;;;;;;;%%;:: 
+       `::'v;%;%nnnnn;%;%;%nvv,;;;;;;;,::;;;;;;;;%;;::.,,. 
+         `vvnnnn;nnn;vvvvvvv;nnvvvv,;;;;;%;;;;;;;;;::,::%::. 
+          v%;%;%;nnnvv%;%;%;vnnnnnvvvv,.;;%%;;;;;;::,::;;%%:, 
+          `%' `@a;%nnv%' `@a;%vnnnnvvv,::,;;%;;;;;::;;;;;%;:: 
+         ,,%, .@@a;%mv%, .@@@;%vnnvvv,::::,;;;;;;;;;;;;;;;::' 
+       ,;,vvnnnnnnvvmnnnnnnnnnnnnnvvv,;;;;;;;;;;;;;;;;;;;;,::;, 
+      ,;,vvnnnnnvvvmnnnnnnnnnnnnnnvv,;;;%;;;;;;;;;;;;;;;;;;;;;;;, 
+      ;;,vvnnnnvv;mnnnnnnnnnnnnnnnvv,;;%%;;;;;;;;;::;;;;;;;;%:;;o, 
+      `;;vvvnnnnvv;mnnnnnnnnnnnnnnvv,;;%%;;;;;;;;:::;;;;;;;;%%;,Oo, 
+        `;vvvnnnnnnnnnnnnnnnnnnnnnnvv,;;;%;;;;;;:::;;;;;;;;;%%;,OOo 
+           `vvvv.;;;.;;;;.vvnnnnnnnnnv,;;;;;;;:::;;;;;;;;;:%:;;,OOO 
+             `vvvv;;;;;;vvnnnnnnnnnnnnnnvvvv,;;;;;;;;;;;;;:;;;,oOOO 
+         .oOOOo;vvvvvvvvvnnnnnnnnnnnnnnnnnvvv,;;;;;;;;;;;;;;,oOOO;@ 
+      .oOOOOOOOOo;vvvvvvvvvvvv;%%vvvvvvvvvvnvv,;;;;;;;;;;;,oOOO;@@' 
+   .oOOOOOOOOOOOOOOoooooooo;%%vvvvvvvvvnnnnnnvvv,;;;;;;;oOOO;@@@' 
+  OOOOOOOOOOOOOOOOOOOOOOOO;vvvvvvvnnnnnnnnnnnnnvvvvvv;OOO;@@@@' 
+ OOOOOOOOOOOOOOOOOOOOOo;vvnnnnnnnnnnnnnnnnnnnnnvvv%;OO;@@@@@' 
+ OOOOOOOOOOOOOOOOOOO;vvnnnnnnnnnnnnnnnnnnnnnnnnvvv%;@@@@@@' 
+ `OOOOOOOOOOOOOOO;vvnnnnnnnnnnnnnnnnnnnnnnnnnnvv;@@@@@@@;sSSSSSs, 
+   `OOOOOOOOO;vvnnnnnnnnnnnnnnnnnnnnnnnnnnnnvv;@@@@@@@@;S$$$$$$$Ss 
+ .sSs`OOOOO;vvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvv;@@@@@@;sS$;$$$$$$$$SS, 
+sS$$$$S;O;vvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvvv;@@@;sS$$;;$$$$;$$$$$$S 
+S$$$;$SS;vvnnnnnnnnnnnnnnnnnnnnnnnnnnnnvvvv;I;@@;S$$;:;$$$$$;;$$$$$S 
+SS;;$SS;Ii;vvvvvvvvvvvvvvvvvvvvvvvvvvvvv;iII;SS$$$;::;$$$$$;::;$$$$S 
+S;:;SS;IIIIIiiiiiiiiii[|]iiiiiiiiiiiiiiIII;sSS$$$;::;$$$$$$;:::;$$$S 
+S;;SS;IIIIIIIIIIIIIII[|]IIIIIIIIIIIIIIIII;SS$$$$$;::;$$$$$$s;:::;$$S 
+S;;S;IIIIIIIIIIIIIII[|]IIIIIIIIIIIIIIIII;SS$$$$$$;:;$$$$$$$$;:::;$$S 
+S;;S;IIIIIIIIIIIIIII[|]IIIIIIIIIIIIIIIII;SS$$$$$$;:;$$$$$$$$;::;$$$S 
+S$;S;IIIIIIIIIIIIIII[|]IIIIIIIIIIIIIIIIII;SS$$$$$$;;$$$$$$$$;:;$$$$S 
+S$$$S;IIIIIIIIIIIIIII[|]IIIIIIIIIIIIIIIIIII;SS$$$$$$;$$$$$$;;$$$$$$S 
+S$$$$S;IIIIIIIIIIIIIII[|]IIIIIIIIIIIIIIIIIIII;SS$$$$$$$$$$$$$$$$$$$S
+

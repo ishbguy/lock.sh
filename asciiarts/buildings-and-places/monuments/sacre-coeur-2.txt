@@ -1,9 +1,0 @@
-     SSSSSSSS      A       CCCCCCCC  RRRRRRR    EEEEEEEEE              CCCCCCCC   OOOOOOO   EEEEEEEEE  UU     UU  RRRRRRR
-    SSSSSSSSS     A A     CCCCCCCCC  RRRRRRRR   EEEEEEEEE             CCCCCCCCC  OOOOOOOOO  EEEEEEEEE  UU     UU  RRRRRRRR
-    SS           AA AA    CC         RR     RR  EE                    CC         OO     OO  EE         UU     UU  RR     RR
-    SSS         AA   AA   CC         RR     RR  EE         ---------  CC         OO     OO  EE         UU     UU  RR     RR
-     SSSSSSS    AAAAAAA   CC         RRRRRRRR   EEEEEEEE   ---------  CC         OO     OO  EEEEEEEE   UU     UU  RRRRRRRR
-          SSS  AA     AA  CC         RR  RR     EE         ---------  CC         OO     OO  EE         UU     UU  RR  RR
-           SS  AA     AA  CC         RR   RR    EE                    CC         OO     OO  EE         UU     UU  RR   RRR
-    SSSSSSSSS  AA     AA  CCCCCCCCC  RR    RR   EEEEEEEEE             CCCCCCCCC  OOOOOOOOO  EEEEEEEEE  UUUUUUUUU  RR    RR
-    SSSSSSSS   AA     AA   CCCCCCCC  RR     RR  EEEEEEEEE              CCCCCCCC   OOOOOOO   EEEEEEEEE   UUUUUUU   RR     RR

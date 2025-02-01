@@ -1,24 +1,26 @@
-         LOVELOVELOV                ELOVELOVELO
-     VELOVELOVELOVELOVE          LOVELOVELOVELOVELO
-  VELOVELOVELOVELOVELOVEL      OVELOVELOVELOVELOVELOVE
- LOVELOVELOVELOVELOVELOVEL    OVELOVELOVELOVELOVELOVELO
-VELOVELOVELOVELOVELOVELOVEL  OVELOVELOVELOVELOVELOVELOVE
-LOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVE
-LOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVE
- LOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELO
- VELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVE
-   LOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELO
-     VELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELOVE
-       LOVELOVELOVELOVELOVELOVELOVELOVELOVELOVELO
-         VELOVELOVELOVELOVELOVELOVELOVELOVELOVE
-           LOVELOVELOVELOVELOVELOVELOVELOVELO
-             VELOVELOVELOVELOVELOVELOVELOVE
-               LOVELOVELOVELOVELOVELOVELO
-                  VELOVELOVELOVELOVELOV
-                  VELOVELOVELOVELOVEL
-                  VELOVELOVELOVELOO
-                      VELOVELOVELO        Paal D. Ekran - The Last Viking
-                      VELOVELOVELO
-                      VELOVELOVEL
-                      VELOVELOVE
-                           VE             
+            #######
+        ####    ##
+      ##       ##
+    ###
+   ###
+   ###
+   ###      ##             #             #               ##
+   ###     ######        ####          ###             ######
+ #####    ##########   #######        ####           ############
+#  ###  ###   #####        ####       ####          ##     #####
+   ### ##      ###          ###       ####        ##         ###
+   ####       ####          ###       ###        #          ###
+   ###        ####          ###       ###       ##          ###
+   ###        ####          ##       ####      ####         ###
+   ###        ####          ##      # ###       ####       ####
+   ###        ####         ###    ##  ###    #  ######    # ###
+  ####        ####        ###### #   #####  #     ########  ###
+  #######     ####           ####      #####         ###    ###
+     ##       ####            #          #           #      ###
+              ####                             #            ###
+              ###                             #             ###
+             ###                             ###           ###
+             ##                             ######      ####
+           ###                               ###########
+          #
+

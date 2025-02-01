@@ -147,11 +147,14 @@ EOF
         [[ -d $dir ]] || mkdir -p "$dir"
         
         awk -v file="$file" '
-        BEGIN { RS = "" ; FS = "\n" }
+        BEGIN { RS = "@@ascii-art-record-separator@@\n" ; FS = "\n" }
         {
-            print $0 > (file "-" NR ".txt")
+            if ($0)
+                print $0 > (file "-" NR-1 ".txt")
         }
-        ' <<<"$(echo "${HTMLS[$i]}" | htmlq .asciiarts | htmlq -t pre)"
+        ' <<<"$(echo "${HTMLS[$i]}" | htmlq .asciiarts | htmlq -p pre \
+            | sed -r -e 's#^<pre.*>#@@ascii-art-record-separator@@\n#g' -e '/<\/pre>$/d' \
+            -e 's/&lt;/</g' -e 's/&gt;/>/g' -e 's/&quot;/"/g' -e 's/&amp;/\&/g')"
     done
 
 }

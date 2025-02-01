@@ -1,22 +1,25 @@
-                r                
-               ain
-               rai
-              nrain
-             rainrai
-            nrainrain
-           ainrainrain
-          rainrainrainr
-         ainrainrainrain
-        rainrainrainrainr
-      ainrainrainrainrainra
-    inra nrainrainrainrainrai
-  nrain  inrainrainrainrainrain
- rain   nrainrainrainrainrainrai
-nrai   inrainrainrainrainrainrain
-rai   inrainrainrainrainrainrainr
-rain   nrainrainrainrainrainrainr
- rainr  nrainrainrainrainrainrai
-  nrain ainrainrainrainrainrain
-    rainrainrainrainrainrainr
-      rainranirainrainrainr
-           ainrainrain
+      |       |        |       | |
+ ' |   |   |     '  |      '      
+              |           |     | 
+ '     |  _,..--I--..,_ |         
+   / _.-`` _,-`   `-,_ ``-._ \ lt.
+     `-,_,_,.,_   _,.,_._,-`      
+|  | '   '     `Y` __ '     '     
+  '|        ,-. I /  \       |  | 
+ |    |    /   )I \  /     '   |  
+'  '      /   / I_.""._           
+|  |    ,l  .'..`      `.   ' |  |
+ |     / | /   \        l         
+      /, '"  .  \      ||   |   | 
+ |  ' ||      |"|      ||   |     
+'     ||      | |      ||       | 
+|     \|      | '.____,'/  |  |   
+   |   |      |  |    |F   '    | 
+ | '   |      |  | |\ |     ' |   
+       |      |  | || |      |    
+|  |   |      |  | || |    |    | 
+       |      |  | || |      |    
+ ' |   '.____,'  \_||_/   |    |  
+         |/\|    [_][_]      |    
+""""""""""""""""""""""""""""""""""
+

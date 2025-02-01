@@ -1,5 +1,0 @@
-     ___              ___
-    <*,->            <*,*>
-    [`-']            [`S']
-    -"-"-            -"-"-
-confidential owl   super owl

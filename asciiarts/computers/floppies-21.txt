@@ -26,4 +26,3 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 8                  aaa  `bad'  aaa                  8
 """""""""""""""""""' `"""""""""' `"""""""""""""""""""
                                    Normand  Veilleux
-

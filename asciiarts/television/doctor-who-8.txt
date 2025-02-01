@@ -18,4 +18,3 @@
     |       |       |
    ===================
 Contributions from: Chris Whitehead (whitehec@cs.man.ac.uk)
-

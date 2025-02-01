@@ -12,4 +12,3 @@ HHH          HHH     UUU       UUU     GGG          GGG
 HHH          HHH     UUU       UUU      GG         GG
 HHH          HHH      UUU     UUU        GGGGGGGGGGG
 HHH          HHH       UUUUUUUUU          GGGGGGGGG
-

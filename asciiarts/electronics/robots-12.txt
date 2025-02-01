@@ -26,5 +26,3 @@
        ,/|__|\   /|__|\,     -- Jay Thaler <thal...@egr.msu.edu>
       /--|__|-\ /-|__|--\
      |___|  |_| |_|  |___|
-</thal...@egr.msu.edu></pre>
-

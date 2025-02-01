@@ -4,4 +4,3 @@
   // ~ ~ ~~ | ~~~ ~~ \\      Original Unknown
  //________.|.________\\     Diddled by David Issel
 `----------`-'----------'
-

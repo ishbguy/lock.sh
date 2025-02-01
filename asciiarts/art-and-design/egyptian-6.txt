@@ -49,5 +49,3 @@
             \             |             |             /
              'XXXXXXXXXXXX|             |XXXXXXXXXXXX'
                `-.________/             \________.-`
-</i></i></pre>
-

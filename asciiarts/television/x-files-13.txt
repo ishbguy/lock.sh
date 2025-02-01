@@ -45,4 +45,3 @@
                           \        :    \         \
                            :       :     \         \
 ASCII-art version by Meph.99
-

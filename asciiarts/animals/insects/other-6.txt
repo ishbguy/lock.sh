@@ -6,4 +6,3 @@ You have a small bug in your code
       /__XXXXX__\
       /   XXX   \
            V
-
